@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GymTimer Settings</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>GymTimer</h1>
+    <p class="subtitle">Plan Configuration</p>
+  </header>
+
+  <main>
+    <!-- Plan name -->
+    <section class="card">
+      <label class="field-label" for="planName">Plan Name</label>
+      <input type="text" id="planName" class="text-input" placeholder="e.g. Push Day" maxlength="30">
+    </section>
+
+    <!-- Exercise list -->
+    <section class="card">
+      <div class="section-header">
+        <span class="field-label">Exercises</span>
+        <span id="exerciseCount" class="badge">0</span>
+      </div>
+      <ul id="exerciseList" class="exercise-list">
+        <li class="empty-state" id="emptyState">No exercises added yet</li>
+      </ul>
+      <button class="btn-add" id="btnAdd">+ Add Exercise</button>
+    </section>
+  </main>
+
+  <footer>
+    <button class="btn-save" id="btnSave">Save Plan</button>
+  </footer>
+
+  <!-- Search modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Add Exercise</h2>
+        <button class="btn-close" id="btnCloseModal">✕</button>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="list">From Library</button>
+        <button class="tab" data-tab="custom">Custom</button>
+      </div>
+
+      <!-- Library tab -->
+      <div class="tab-content" id="tabList">
+        <div class="search-box">
+          <input type="text" id="searchInput" class="text-input" placeholder="Search exercises…" autocomplete="off">
+        </div>
+        <div class="filter-row">
+          <select id="filterMuscle" class="select-input">
+            <option value="">All muscles</option>
+          </select>
+          <select id="filterEquip" class="select-input">
+            <option value="">All equipment</option>
+          </select>
+        </div>
+        <ul id="searchResults" class="search-results"></ul>
+      </div>
+
+      <!-- Custom tab -->
+      <div class="tab-content hidden" id="tabCustom">
+        <label class="field-label" for="customName">Exercise Name</label>
+        <input type="text" id="customName" class="text-input" placeholder="e.g. Cable Fly" maxlength="30">
+        <button class="btn-primary" id="btnAddCustom">Add</button>
+      </div>
+
+      <!-- Sets / Reps / Rest — shown after exercise selected -->
+      <div class="params-panel hidden" id="paramsPanel">
+        <div class="selected-name" id="selectedName"></div>
+        <div class="params-grid">
+          <div class="param-field">
+            <label class="field-label">Sets</label>
+            <input type="number" id="paramSets" class="num-input" value="3" min="1" max="20">
+          </div>
+          <div class="param-field">
+            <label class="field-label">Reps</label>
+            <input type="number" id="paramReps" class="num-input" value="10" min="1" max="100">
+          </div>
+          <div class="param-field">
+            <label class="field-label">Rest (s)</label>
+            <input type="number" id="paramRest" class="num-input" value="60" min="0" max="600" step="5">
+          </div>
+        </div>
+        <button class="btn-primary" id="btnConfirmAdd">Add to Plan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit modal -->
+  <div class="modal-overlay" id="editOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Edit Exercise</h2>
+        <button class="btn-close" id="btnCloseEdit">✕</button>
+      </div>
+      <div class="selected-name" id="editName"></div>
+      <div class="params-grid">
+        <div class="param-field">
+          <label class="field-label">Sets</label>
+          <input type="number" id="editSets" class="num-input" min="1" max="20">
+        </div>
+        <div class="param-field">
+          <label class="field-label">Reps</label>
+          <input type="number" id="editReps" class="num-input" min="1" max="100">
+        </div>
+        <div class="param-field">
+          <label class="field-label">Rest (s)</label>
+          <input type="number" id="editRest" class="num-input" min="0" max="600" step="5">
+        </div>
+      </div>
+      <button class="btn-primary" id="btnConfirmEdit">Save Changes</button>
+      <button class="btn-danger" id="btnDeleteExercise">Remove Exercise</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
