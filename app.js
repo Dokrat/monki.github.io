@@ -4,7 +4,8 @@
 // Property key used on the watch side (properties.xml).
 const PROP_KEY = 'planConfig';
 
-// Pipe-delimited format: "Plan Name|Ex Name,sets,reps,rest|..."
+// Pipe-delimited format for one plan: "Plan Name|Ex Name,sets,reps,rest|..."
+// Plans separated by semicolons: "Plan1|...|...;Plan2|...|..."
 function serializePlan(p) {
   const parts = [p.planName || 'My Plan'];
   (p.exercises || []).forEach(e => {
@@ -27,17 +28,26 @@ function deserializePlan(raw) {
   return p;
 }
 
+function serializeAll(plans) {
+  return plans.map(serializePlan).join(';');
+}
+
+function deserializeAll(raw) {
+  if (!raw) return [];
+  return raw.split(';').map(deserializePlan).filter(p => p !== null);
+}
+
 // In production Garmin injects window.garmin.settings.
 // In browser dev mode we use localStorage as a mock.
 const GarminSDK = (() => {
   if (window.garmin && window.garmin.settings) {
     return {
       getSettings: (cb) => window.garmin.settings.getSettings(settings => {
-        cb(deserializePlan(settings[PROP_KEY]));
+        cb(deserializeAll(settings[PROP_KEY]));
       }),
-      setSettings: (data, cb) => {
+      setSettings: (plans, cb) => {
         const payload = {};
-        payload[PROP_KEY] = serializePlan(data);
+        payload[PROP_KEY] = serializeAll(plans);
         window.garmin.settings.setSettings(payload, cb);
       },
     };
@@ -46,23 +56,21 @@ const GarminSDK = (() => {
   return {
     getSettings: (cb) => {
       const raw = localStorage.getItem('gymtimerPlanConfig');
-      cb(deserializePlan(raw));
+      cb(deserializeAll(raw));
     },
-    setSettings: (data, cb) => {
-      localStorage.setItem('gymtimerPlanConfig', serializePlan(data));
+    setSettings: (plans, cb) => {
+      localStorage.setItem('gymtimerPlanConfig', serializeAll(plans));
       if (cb) cb();
     },
   };
 })();
 
 // ── State ─────────────────────────────────────────────────────────────────
-let allExercises = [];   // full library from exercises.json
-let plan = {             // current plan being edited
-  planName: '',
-  exercises: [],         // { name, sets, reps, rest }
-};
-let pendingExercise = null;  // exercise selected in modal, waiting for params
-let editingIndex = null;     // index of exercise being edited
+let allExercises  = [];   // full library from exercises.json
+let plan          = { planName: '', exercises: [] };  // plan being built
+let savedPlans    = [];   // list of finalized plans [{ planName, exercises[] }]
+let pendingExercise = null;
+let editingIndex    = null;
 
 // ── DOM refs ──────────────────────────────────────────────────────────────
 const $ = id => document.getElementById(id);
@@ -70,7 +78,6 @@ const $ = id => document.getElementById(id);
 const planNameEl     = $('planName');
 const exerciseListEl = $('exerciseList');
 const exerciseCount  = $('exerciseCount');
-const emptyState     = $('emptyState');
 
 const modalOverlay   = $('modalOverlay');
 const editOverlay    = $('editOverlay');
@@ -86,7 +93,7 @@ const selectedName   = $('selectedName');
 // ── Init ──────────────────────────────────────────────────────────────────
 async function init() {
   await loadExercises();
-  loadSavedPlan();
+  loadSavedPlans();
   bindEvents();
 }
 
@@ -102,13 +109,10 @@ async function loadExercises() {
   }
 }
 
-function loadSavedPlan() {
-  GarminSDK.getSettings(saved => {
-    if (saved && saved.planName !== undefined) {
-      plan = saved;
-    }
-    planNameEl.value = plan.planName || '';
-    renderExerciseList();
+function loadSavedPlans() {
+  GarminSDK.getSettings(loaded => {
+    savedPlans = loaded || [];
+    renderPlanList();
   });
 }
 
@@ -138,8 +142,6 @@ function populateFilters() {
 function renderExerciseList() {
   const items = plan.exercises;
   exerciseCount.textContent = items.length;
-
-  // clear
   exerciseListEl.innerHTML = '';
 
   if (items.length === 0) {
@@ -167,6 +169,40 @@ function renderExerciseList() {
   });
 }
 
+// ── Plan list render ──────────────────────────────────────────────────────
+function renderPlanList() {
+  const listEl  = $('planList');
+  const countEl = $('planCount');
+  countEl.textContent = savedPlans.length;
+
+  if (savedPlans.length === 0) {
+    listEl.innerHTML = '<div class="empty-state">No plans added yet</div>';
+    $('btnGenerateConfig').style.display = 'none';
+    $('outputSection').style.display = 'none';
+    return;
+  }
+
+  $('btnGenerateConfig').style.display = '';
+  listEl.innerHTML = '';
+  savedPlans.forEach((p, i) => {
+    const card = document.createElement('div');
+    card.className = 'plan-card';
+    card.innerHTML = `
+      <div class="plan-card-info">
+        <div class="plan-card-name">${p.planName}</div>
+        <div class="plan-card-meta">${p.exercises.length} exercise${p.exercises.length !== 1 ? 's' : ''}</div>
+      </div>
+      <button class="btn-remove-plan" data-index="${i}" title="Remove plan">✕</button>
+    `;
+    card.querySelector('.btn-remove-plan').addEventListener('click', () => {
+      savedPlans.splice(i, 1);
+      renderPlanList();
+      $('outputSection').style.display = 'none';
+    });
+    listEl.appendChild(card);
+  });
+}
+
 // ── Search ────────────────────────────────────────────────────────────────
 function runSearch() {
   const query  = searchInput.value.trim().toLowerCase();
@@ -174,18 +210,10 @@ function runSearch() {
   const equip  = filterEquip.value;
 
   let results = allExercises;
+  if (query)  results = results.filter(e => e.name.toLowerCase().includes(query));
+  if (muscle) results = results.filter(e => (e.primaryMuscles || []).includes(muscle));
+  if (equip)  results = results.filter(e => e.equipment === equip);
 
-  if (query) {
-    results = results.filter(e => e.name.toLowerCase().includes(query));
-  }
-  if (muscle) {
-    results = results.filter(e => (e.primaryMuscles || []).includes(muscle));
-  }
-  if (equip) {
-    results = results.filter(e => e.equipment === equip);
-  }
-
-  // limit display for performance
   const shown = results.slice(0, 60);
   searchResults.innerHTML = '';
 
@@ -208,12 +236,9 @@ function runSearch() {
 
 function selectExercise(name) {
   pendingExercise = name;
-
-  // highlight selected
   searchResults.querySelectorAll('.search-result-item').forEach(el => {
     el.classList.toggle('selected', el.querySelector('.result-name').textContent === name);
   });
-
   selectedName.textContent = name;
   paramsPanel.classList.remove('hidden');
   paramsPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -237,14 +262,12 @@ function closeAddModal() {
 
 function confirmAdd() {
   if (!pendingExercise) return;
-
   plan.exercises.push({
     name: pendingExercise,
     sets: parseInt($('paramSets').value) || 3,
     reps: parseInt($('paramReps').value) || 10,
     rest: parseInt($('paramRest').value) || 60,
   });
-
   renderExerciseList();
   closeAddModal();
 }
@@ -253,7 +276,7 @@ function addCustom() {
   const name = $('customName').value.trim();
   if (!name) return;
   selectExercise(name);
-  switchTab('list');  // switch to show params panel in same modal
+  switchTab('list');
 }
 
 // ── Edit flow ─────────────────────────────────────────────────────────────
@@ -291,28 +314,42 @@ function deleteExercise() {
   closeEditModal();
 }
 
-// ── Generate ──────────────────────────────────────────────────────────────
-function savePlan() {
-  plan.planName = planNameEl.value.trim() || 'My Plan';
-
+// ── Add plan to list ───────────────────────────────────────────────────────
+function addPlanToList() {
+  const name = planNameEl.value.trim() || 'My Plan';
   if (!plan.exercises.length) {
     showToast('Add at least one exercise first.');
     return;
   }
+  savedPlans.push({ planName: name, exercises: [...plan.exercises] });
 
-  const str = serializePlan(plan);
+  // Reset builder for next plan
+  plan = { planName: '', exercises: [] };
+  planNameEl.value = '';
+  renderExerciseList();
 
-  // Show output section and fill textarea
-  const section = document.getElementById('outputSection');
+  renderPlanList();
+  showToast(`"${name}" added to list ✓`);
+  $('planListSection').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── Generate config string ─────────────────────────────────────────────────
+function generateConfigString() {
+  if (!savedPlans.length) {
+    showToast('Add at least one plan first.');
+    return;
+  }
+  const str = serializeAll(savedPlans);
+
+  const section = $('outputSection');
   const output  = $('planOutput');
   section.style.display = '';
   output.value = str;
   output.select();
   section.scrollIntoView({ behavior: 'smooth' });
 
-  // Also persist via SDK as before
-  GarminSDK.setSettings(plan, () => {
-    showToast('Plan generated ✓');
+  GarminSDK.setSettings(savedPlans, () => {
+    showToast('Config generated ✓');
   });
 }
 
@@ -351,7 +388,8 @@ function bindEvents() {
   $('btnCloseModal').addEventListener('click', closeAddModal);
   $('btnConfirmAdd').addEventListener('click', confirmAdd);
   $('btnAddCustom').addEventListener('click', addCustom);
-  $('btnSave').addEventListener('click', savePlan);
+  $('btnSave').addEventListener('click', addPlanToList);
+  $('btnGenerateConfig').addEventListener('click', generateConfigString);
   $('btnCopy').addEventListener('click', () => {
     const val = $('planOutput').value;
     if (!val) return;
@@ -374,7 +412,6 @@ function bindEvents() {
     tab.addEventListener('click', () => switchTab(tab.dataset.tab));
   });
 
-  // close modals on overlay click
   modalOverlay.addEventListener('click', e => {
     if (e.target === modalOverlay) closeAddModal();
   });

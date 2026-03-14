@@ -33,21 +33,32 @@
     </section>
   </main>
 
-  <!-- Generated plan output -->
+  <!-- Saved plan list -->
+  <section class="card" id="planListSection">
+    <div class="section-header">
+      <span class="field-label">Plan List</span>
+      <span id="planCount" class="badge">0</span>
+    </div>
+    <div id="planList"><div class="empty-state">No plans added yet</div></div>
+    <button class="btn-generate" id="btnGenerateConfig" style="display:none">Generate Config String</button>
+  </section>
+
+  <!-- Generated config output -->
   <section class="card" id="outputSection" style="display:none">
-    <div class="field-label">Generated Plan String</div>
-    <textarea id="planOutput" class="plan-output" readonly rows="4"></textarea>
+    <div class="field-label">Config String — all plans</div>
+    <textarea id="planOutput" class="plan-output" readonly rows="5"></textarea>
     <button class="btn-copy" id="btnCopy">Copy to clipboard</button>
     <div class="output-hint">
       <strong>How to use on your watch:</strong><br>
-      Open the <em>GymWorkoutTimer</em> app settings in <strong>Garmin Connect Mobile</strong>
-      → find the <em>Plan Config</em> field → paste the string above → sync your watch.
-      The new plan will appear on the watch after sync.
+      1. Copy the string above.<br>
+      2. Open <strong>Garmin Connect Mobile</strong> → My Device → Apps → <em>GymWorkoutTimer</em> → Settings.<br>
+      3. Paste the string into the <em>Plan Configuration</em> field and tap Save.<br>
+      4. Sync your watch — all plans will appear in the SELECT PLAN screen.
     </div>
   </section>
 
   <footer>
-    <button class="btn-save" id="btnSave">Generate Plan</button>
+    <button class="btn-save" id="btnSave">Add Plan to List</button>
   </footer>
 
   <!-- Search modal -->

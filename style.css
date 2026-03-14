@@ -259,6 +259,59 @@ footer {
 
 .btn-danger:active { background: rgba(204,51,51,0.15); }
 
+/* ── Plan list ── */
+.plan-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+}
+
+.plan-card-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.plan-card-meta {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+.btn-remove-plan {
+  background: transparent;
+  border: none;
+  color: var(--danger);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.btn-remove-plan:hover { background: rgba(204,51,51,0.12); }
+
+.btn-generate {
+  width: 100%;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 12px;
+  margin-top: 12px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+
+.btn-generate:active { opacity: 0.85; }
+
 /* ── Plan output ── */
 .plan-output {
   width: 100%;
