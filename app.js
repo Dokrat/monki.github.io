@@ -420,5 +420,21 @@ function bindEvents() {
   });
 }
 
+// ── Visual viewport: push page up when keyboard appears ───────────────────
+// Fallback for browsers that don't support interactive-widget=resizes-content
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', () => {
+    const offset = window.innerHeight - window.visualViewport.height;
+    document.body.style.marginBottom = offset > 0 ? offset + 'px' : '';
+    if (offset > 50) {
+      // Scroll focused element into view after a short delay
+      const el = document.activeElement;
+      if (el && el !== document.body) {
+        setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'center' }), 50);
+      }
+    }
+  });
+}
+
 // ── Start ─────────────────────────────────────────────────────────────────
 init();
