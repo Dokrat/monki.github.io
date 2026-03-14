@@ -259,6 +259,50 @@ footer {
 
 .btn-danger:active { background: rgba(204,51,51,0.15); }
 
+/* ── Plan output ── */
+.plan-output {
+  width: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  padding: 10px 12px;
+  resize: none;
+  margin-top: 8px;
+  word-break: break-all;
+}
+
+.btn-copy {
+  width: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.btn-copy:active { background: var(--accent-dim); }
+
+.output-hint {
+  margin-top: 12px;
+  padding: 12px;
+  background: var(--surface2);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.output-hint strong { color: var(--text); }
+.output-hint em { color: var(--accent); font-style: normal; }
+
 .btn-close {
   background: var(--surface2);
   border: 1px solid var(--border);

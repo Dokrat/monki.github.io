@@ -199,7 +199,7 @@ function runSearch() {
     li.className = 'search-result-item';
     li.innerHTML = `
       <div class="result-name">${ex.name}</div>
-      <div class="result-meta">${(ex.primaryMuscles || []).map(capitalize).join(', ')} · ${capitalize(ex.equipment || '')}</div>
+      <div class="result-meta">${(ex.primaryMuscles || []).map(capitalize).join(', ')} · ${capitalize(ex.equipment || '')}${(ex.secondaryMuscles || []).length ? ' [' + ex.secondaryMuscles.map(capitalize).join(', ') + ']' : ''}</div>
     `;
     li.addEventListener('click', () => selectExercise(ex.name));
     searchResults.appendChild(li);
@@ -291,12 +291,28 @@ function deleteExercise() {
   closeEditModal();
 }
 
-// ── Save ──────────────────────────────────────────────────────────────────
+// ── Generate ──────────────────────────────────────────────────────────────
 function savePlan() {
   plan.planName = planNameEl.value.trim() || 'My Plan';
 
+  if (!plan.exercises.length) {
+    showToast('Add at least one exercise first.');
+    return;
+  }
+
+  const str = serializePlan(plan);
+
+  // Show output section and fill textarea
+  const section = document.getElementById('outputSection');
+  const output  = $('planOutput');
+  section.style.display = '';
+  output.value = str;
+  output.select();
+  section.scrollIntoView({ behavior: 'smooth' });
+
+  // Also persist via SDK as before
   GarminSDK.setSettings(plan, () => {
-    showToast('Plan saved ✓');
+    showToast('Plan generated ✓');
   });
 }
 
@@ -336,6 +352,15 @@ function bindEvents() {
   $('btnConfirmAdd').addEventListener('click', confirmAdd);
   $('btnAddCustom').addEventListener('click', addCustom);
   $('btnSave').addEventListener('click', savePlan);
+  $('btnCopy').addEventListener('click', () => {
+    const val = $('planOutput').value;
+    if (!val) return;
+    navigator.clipboard.writeText(val).then(() => showToast('Copied ✓')).catch(() => {
+      $('planOutput').select();
+      document.execCommand('copy');
+      showToast('Copied ✓');
+    });
+  });
 
   $('btnCloseEdit').addEventListener('click', closeEditModal);
   $('btnConfirmEdit').addEventListener('click', confirmEdit);
