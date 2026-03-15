@@ -1,15 +1,15 @@
 'use strict';
 
-// ── Garmin Connect SDK bridge ──────────────────────────────────────────────
-// Property key used on the watch side (properties.xml).
 const PROP_KEY = 'planConfig';
+const HISTORY_KEY = 'gymtimerConfigHistory';
 
-// Pipe-delimited format for one plan: "Plan Name|Ex Name,sets,reps,rest|..."
-// Plans separated by semicolons: "Plan1|...|...;Plan2|...|..."
+// ── Serialization ──────────────────────────────────────────────────────────
+// Format: "PlanName|ExName,sets,reps,rest,workTime|..."
+// reps=0 → MAX; workTime=0 → no limit
 function serializePlan(p) {
   const parts = [p.planName || 'My Plan'];
   (p.exercises || []).forEach(e => {
-    parts.push(`${e.name},${e.sets},${e.reps},${e.rest}`);
+    parts.push(`${e.name},${e.sets},${e.reps},${e.rest},${e.workTime || 0}`);
   });
   return parts.join('|');
 }
@@ -22,29 +22,30 @@ function deserializePlan(raw) {
   for (let i = 1; i < parts.length; i++) {
     const f = parts[i].split(',');
     if (f.length >= 4) {
-      p.exercises.push({ name: f[0], sets: parseInt(f[1]) || 3, reps: parseInt(f[2]) || 10, rest: parseInt(f[3]) || 60 });
+      p.exercises.push({
+        name:     f[0],
+        sets:     parseInt(f[1]) || 3,
+        reps:     parseInt(f[2]),        // 0 = MAX — keep as-is
+        rest:     parseInt(f[3]) || 60,
+        workTime: f.length >= 5 ? (parseInt(f[4]) || 0) : 0,
+      });
     }
   }
   return p;
 }
 
-function serializeAll(plans) {
-  return plans.map(serializePlan).join(';');
-}
+function serializeAll(plans) { return plans.map(serializePlan).join(';'); }
 
 function deserializeAll(raw) {
   if (!raw) return [];
   return raw.split(';').map(deserializePlan).filter(p => p !== null);
 }
 
-// In production Garmin injects window.garmin.settings.
-// In browser dev mode we use localStorage as a mock.
+// ── Garmin SDK bridge ──────────────────────────────────────────────────────
 const GarminSDK = (() => {
   if (window.garmin && window.garmin.settings) {
     return {
-      getSettings: (cb) => window.garmin.settings.getSettings(settings => {
-        cb(deserializeAll(settings[PROP_KEY]));
-      }),
+      getSettings: cb => window.garmin.settings.getSettings(s => cb(deserializeAll(s[PROP_KEY]))),
       setSettings: (plans, cb) => {
         const payload = {};
         payload[PROP_KEY] = serializeAll(plans);
@@ -52,12 +53,8 @@ const GarminSDK = (() => {
       },
     };
   }
-  // Dev mock via localStorage
   return {
-    getSettings: (cb) => {
-      const raw = localStorage.getItem('gymtimerPlanConfig');
-      cb(deserializeAll(raw));
-    },
+    getSettings: cb => cb(deserializeAll(localStorage.getItem('gymtimerPlanConfig'))),
     setSettings: (plans, cb) => {
       localStorage.setItem('gymtimerPlanConfig', serializeAll(plans));
       if (cb) cb();
@@ -65,10 +62,10 @@ const GarminSDK = (() => {
   };
 })();
 
-// ── State ─────────────────────────────────────────────────────────────────
-let allExercises  = [];   // full library from exercises.json
-let plan          = { planName: '', exercises: [] };  // plan being built
-let savedPlans    = [];   // list of finalized plans [{ planName, exercises[] }]
+// ── State ──────────────────────────────────────────────────────────────────
+let allExercises    = [];
+let plan            = { planName: '', exercises: [] };
+let savedPlans      = [];
 let pendingExercise = null;
 let editingIndex    = null;
 
@@ -78,15 +75,12 @@ const $ = id => document.getElementById(id);
 const planNameEl     = $('planName');
 const exerciseListEl = $('exerciseList');
 const exerciseCount  = $('exerciseCount');
-
 const modalOverlay   = $('modalOverlay');
 const editOverlay    = $('editOverlay');
-
 const searchInput    = $('searchInput');
 const searchResults  = $('searchResults');
 const filterMuscle   = $('filterMuscle');
 const filterEquip    = $('filterEquip');
-
 const paramsPanel    = $('paramsPanel');
 const selectedName   = $('selectedName');
 
@@ -94,6 +88,7 @@ const selectedName   = $('selectedName');
 async function init() {
   await loadExercises();
   loadSavedPlans();
+  renderHistory();
   bindEvents();
 }
 
@@ -104,7 +99,6 @@ async function loadExercises() {
     allExercises = data.exercises || [];
     populateFilters();
   } catch (e) {
-    console.warn('Could not load exercises.json:', e);
     allExercises = [];
   }
 }
@@ -118,33 +112,29 @@ function loadSavedPlans() {
 
 // ── Filter dropdowns ──────────────────────────────────────────────────────
 function populateFilters() {
-  const muscles = new Set();
-  const equips  = new Set();
+  const muscles = new Set(), equips = new Set();
   allExercises.forEach(e => {
     (e.primaryMuscles || []).forEach(m => muscles.add(m));
     if (e.equipment) equips.add(e.equipment);
   });
-
   [...muscles].sort().forEach(m => {
-    const opt = document.createElement('option');
-    opt.value = m; opt.textContent = capitalize(m);
-    filterMuscle.appendChild(opt);
+    const o = document.createElement('option');
+    o.value = m; o.textContent = capitalize(m);
+    filterMuscle.appendChild(o);
   });
-
   [...equips].sort().forEach(eq => {
-    const opt = document.createElement('option');
-    opt.value = eq; opt.textContent = capitalize(eq);
-    filterEquip.appendChild(opt);
+    const o = document.createElement('option');
+    o.value = eq; o.textContent = capitalize(eq);
+    filterEquip.appendChild(o);
   });
 }
 
 // ── Exercise list render ──────────────────────────────────────────────────
 function renderExerciseList() {
-  const items = plan.exercises;
-  exerciseCount.textContent = items.length;
+  exerciseCount.textContent = plan.exercises.length;
   exerciseListEl.innerHTML = '';
 
-  if (items.length === 0) {
+  if (plan.exercises.length === 0) {
     const li = document.createElement('li');
     li.className = 'empty-state';
     li.textContent = 'No exercises added yet';
@@ -152,7 +142,9 @@ function renderExerciseList() {
     return;
   }
 
-  items.forEach((ex, i) => {
+  plan.exercises.forEach((ex, i) => {
+    const repsDisplay = ex.reps === 0 ? 'MAX' : ex.reps;
+    const wtDisplay   = ex.workTime > 0 ? ` · ${ex.workTime}s work` : '';
     const li = document.createElement('li');
     li.className = 'exercise-item';
     li.dataset.index = i;
@@ -160,7 +152,7 @@ function renderExerciseList() {
       <div class="exercise-index">${i + 1}</div>
       <div class="exercise-info">
         <div class="exercise-name">${ex.name}</div>
-        <div class="exercise-params">${ex.sets} sets · ${ex.reps} reps · ${ex.rest}s rest</div>
+        <div class="exercise-params">${ex.sets} sets · ${repsDisplay} reps${wtDisplay} · ${ex.rest}s rest</div>
       </div>
       <div class="exercise-drag">☰</div>
     `;
@@ -178,7 +170,6 @@ function renderPlanList() {
   if (savedPlans.length === 0) {
     listEl.innerHTML = '<div class="empty-state">No plans added yet</div>';
     $('btnGenerateConfig').style.display = 'none';
-    $('outputSection').style.display = 'none';
     return;
   }
 
@@ -194,13 +185,85 @@ function renderPlanList() {
       </div>
       <button class="btn-remove-plan" data-index="${i}" title="Remove plan">✕</button>
     `;
-    card.querySelector('.btn-remove-plan').addEventListener('click', () => {
+    card.querySelector('.btn-remove-plan').addEventListener('click', e => {
+      e.stopPropagation();
       savedPlans.splice(i, 1);
       renderPlanList();
       $('outputSection').style.display = 'none';
     });
+    // Click on card = load into editor
+    card.querySelector('.plan-card-info').addEventListener('click', () => loadPlanIntoEditor(i));
     listEl.appendChild(card);
   });
+}
+
+// ── History ───────────────────────────────────────────────────────────────
+function saveToHistory(str) {
+  let history = [];
+  try { history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; } catch (_) {}
+  history.unshift({ ts: Date.now(), str });
+  if (history.length > 10) history = history.slice(0, 10);
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+  renderHistory();
+}
+
+function renderHistory() {
+  let history = [];
+  try { history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; } catch (_) {}
+  const section = $('historySection');
+  const listEl  = $('historyList');
+  if (!history.length) { section.style.display = 'none'; return; }
+  section.style.display = '';
+  listEl.innerHTML = '';
+  history.forEach((entry, i) => {
+    const d = new Date(entry.ts);
+    const ts = `${d.toLocaleDateString()} ${d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+    const row = document.createElement('div');
+    row.className = 'history-entry';
+    row.innerHTML = `
+      <div class="history-meta">${ts}</div>
+      <div class="history-str">${entry.str.length > 60 ? entry.str.slice(0, 60) + '…' : entry.str}</div>
+      <div class="history-actions">
+        <button class="btn-history-copy">Copy</button>
+        <button class="btn-history-load">Load</button>
+      </div>
+    `;
+    row.querySelector('.btn-history-copy').addEventListener('click', () => {
+      copyText(entry.str, 'Copied ✓');
+    });
+    row.querySelector('.btn-history-load').addEventListener('click', () => {
+      importString(entry.str);
+    });
+    listEl.appendChild(row);
+  });
+}
+
+// ── Import from string ─────────────────────────────────────────────────────
+function importString(raw) {
+  raw = (raw || '').trim();
+  if (!raw) { showToast('Paste a plan string first.'); return; }
+  // If multi-plan, take the first one
+  const firstPlan = deserializePlan(raw.split(';')[0]);
+  if (!firstPlan || !firstPlan.exercises.length) {
+    showToast('Invalid plan string.');
+    return;
+  }
+  plan = firstPlan;
+  planNameEl.value = plan.planName;
+  renderExerciseList();
+  $('importInput').value = '';
+  showToast(`"${plan.planName}" loaded into editor ✓`);
+  planNameEl.scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── Load plan from list into editor ───────────────────────────────────────
+function loadPlanIntoEditor(index) {
+  const p = savedPlans[index];
+  plan = { planName: p.planName, exercises: p.exercises.map(e => ({ ...e })) };
+  planNameEl.value = plan.planName;
+  renderExerciseList();
+  showToast(`"${plan.planName}" loaded into editor`);
+  planNameEl.scrollIntoView({ behavior: 'smooth' });
 }
 
 // ── Search ────────────────────────────────────────────────────────────────
@@ -250,23 +313,26 @@ function openAddModal() {
   paramsPanel.classList.add('hidden');
   searchInput.value = '';
   $('customName').value = '';
+  $('paramRepsMax').checked = false;
+  $('paramReps').value = 10;
+  $('paramWorkTime').value = 0;
   switchTab('list');
   runSearch();
   modalOverlay.classList.add('open');
   setTimeout(() => searchInput.focus(), 300);
 }
 
-function closeAddModal() {
-  modalOverlay.classList.remove('open');
-}
+function closeAddModal() { modalOverlay.classList.remove('open'); }
 
 function confirmAdd() {
   if (!pendingExercise) return;
+  const isMax = $('paramRepsMax').checked;
   plan.exercises.push({
-    name: pendingExercise,
-    sets: parseInt($('paramSets').value) || 3,
-    reps: parseInt($('paramReps').value) || 10,
-    rest: parseInt($('paramRest').value) || 60,
+    name:     pendingExercise,
+    sets:     parseInt($('paramSets').value) || 3,
+    reps:     isMax ? 0 : (parseInt($('paramReps').value) || 10),
+    rest:     parseInt($('paramRest').value) || 60,
+    workTime: parseInt($('paramWorkTime').value) || 0,
   });
   renderExerciseList();
   closeAddModal();
@@ -283,10 +349,12 @@ function addCustom() {
 function openEditModal(index) {
   editingIndex = index;
   const ex = plan.exercises[index];
-  $('editName').textContent = ex.name;
-  $('editSets').value = ex.sets;
-  $('editReps').value = ex.reps;
-  $('editRest').value = ex.rest;
+  $('editName').textContent     = ex.name;
+  $('editSets').value           = ex.sets;
+  $('editReps').value           = ex.reps;
+  $('editRest').value           = ex.rest;
+  $('editWorkTime').value       = ex.workTime || 0;
+  $('editRepsMax').checked      = ex.reps === 0;
   editOverlay.classList.add('open');
 }
 
@@ -297,14 +365,29 @@ function closeEditModal() {
 
 function confirmEdit() {
   if (editingIndex === null) return;
+  const isMax = $('editRepsMax').checked;
   plan.exercises[editingIndex] = {
-    name: plan.exercises[editingIndex].name,
-    sets: parseInt($('editSets').value) || 3,
-    reps: parseInt($('editReps').value) || 10,
-    rest: parseInt($('editRest').value) || 60,
+    name:     plan.exercises[editingIndex].name,
+    sets:     parseInt($('editSets').value) || 3,
+    reps:     isMax ? 0 : (parseInt($('editReps').value) || 10),
+    rest:     parseInt($('editRest').value) || 60,
+    workTime: parseInt($('editWorkTime').value) || 0,
   };
   renderExerciseList();
   closeEditModal();
+}
+
+function moveExercise(delta) {
+  if (editingIndex === null) return;
+  const newIdx = editingIndex + delta;
+  if (newIdx < 0 || newIdx >= plan.exercises.length) return;
+  const tmp = plan.exercises[editingIndex];
+  plan.exercises[editingIndex] = plan.exercises[newIdx];
+  plan.exercises[newIdx] = tmp;
+  editingIndex = newIdx;
+  renderExerciseList();
+  // Update edit modal index indicator
+  $('editName').textContent = plan.exercises[editingIndex].name;
 }
 
 function deleteExercise() {
@@ -314,7 +397,7 @@ function deleteExercise() {
   closeEditModal();
 }
 
-// ── Add plan to list ───────────────────────────────────────────────────────
+// ── Add plan to list ──────────────────────────────────────────────────────
 function addPlanToList() {
   const name = planNameEl.value.trim() || 'My Plan';
   if (!plan.exercises.length) {
@@ -322,24 +405,22 @@ function addPlanToList() {
     return;
   }
   savedPlans.push({ planName: name, exercises: [...plan.exercises] });
-
-  // Reset builder for next plan
   plan = { planName: '', exercises: [] };
   planNameEl.value = '';
   renderExerciseList();
-
   renderPlanList();
   showToast(`"${name}" added to list ✓`);
   $('planListSection').scrollIntoView({ behavior: 'smooth' });
 }
 
-// ── Generate config string ─────────────────────────────────────────────────
+// ── Generate config string ────────────────────────────────────────────────
 function generateConfigString() {
   if (!savedPlans.length) {
     showToast('Add at least one plan first.');
     return;
   }
   const str = serializeAll(savedPlans);
+  saveToHistory(str);
 
   const section = $('outputSection');
   const output  = $('planOutput');
@@ -355,12 +436,8 @@ function generateConfigString() {
 
 // ── Tabs ──────────────────────────────────────────────────────────────────
 function switchTab(tabId) {
-  document.querySelectorAll('.tab').forEach(t => {
-    t.classList.toggle('active', t.dataset.tab === tabId);
-  });
-  document.querySelectorAll('.tab-content').forEach(c => {
-    c.classList.toggle('hidden', c.id !== 'tab' + capitalize(tabId));
-  });
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tabId));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.toggle('hidden', c.id !== 'tab' + capitalize(tabId)));
 }
 
 // ── Toast ─────────────────────────────────────────────────────────────────
@@ -374,6 +451,21 @@ function showToast(msg) {
   toast.textContent = msg;
   toast.classList.add('show');
   setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+// ── Copy helper ───────────────────────────────────────────────────────────
+function copyText(val, msg) {
+  navigator.clipboard.writeText(val)
+    .then(() => showToast(msg))
+    .catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = val;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showToast(msg);
+    });
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────
@@ -390,19 +482,36 @@ function bindEvents() {
   $('btnAddCustom').addEventListener('click', addCustom);
   $('btnSave').addEventListener('click', addPlanToList);
   $('btnGenerateConfig').addEventListener('click', generateConfigString);
-  $('btnCopy').addEventListener('click', () => {
-    const val = $('planOutput').value;
-    if (!val) return;
-    navigator.clipboard.writeText(val).then(() => showToast('Copied ✓')).catch(() => {
-      $('planOutput').select();
-      document.execCommand('copy');
-      showToast('Copied ✓');
-    });
+  $('btnImport').addEventListener('click', () => importString($('importInput').value));
+
+  $('btnCopy').addEventListener('click', () => copyText($('planOutput').value, 'Copied ✓'));
+
+  $('btnCloseOutput').addEventListener('click', () => {
+    $('outputSection').style.display = 'none';
+  });
+
+  $('btnClearHistory').addEventListener('click', () => {
+    localStorage.removeItem(HISTORY_KEY);
+    renderHistory();
   });
 
   $('btnCloseEdit').addEventListener('click', closeEditModal);
   $('btnConfirmEdit').addEventListener('click', confirmEdit);
   $('btnDeleteExercise').addEventListener('click', deleteExercise);
+  $('btnMoveUp').addEventListener('click', () => moveExercise(-1));
+  $('btnMoveDown').addEventListener('click', () => moveExercise(1));
+
+  // MAX reps checkbox syncs with reps field
+  $('paramRepsMax').addEventListener('change', e => {
+    $('paramReps').disabled = e.target.checked;
+    if (e.target.checked) $('paramReps').value = 0;
+    else if ($('paramReps').value == '0') $('paramReps').value = 10;
+  });
+  $('editRepsMax').addEventListener('change', e => {
+    $('editReps').disabled = e.target.checked;
+    if (e.target.checked) $('editReps').value = 0;
+    else if ($('editReps').value == '0') $('editReps').value = 10;
+  });
 
   searchInput.addEventListener('input', runSearch);
   filterMuscle.addEventListener('change', runSearch);
@@ -412,22 +521,21 @@ function bindEvents() {
     tab.addEventListener('click', () => switchTab(tab.dataset.tab));
   });
 
-  modalOverlay.addEventListener('click', e => {
+  // Close overlay on tap/click outside modal — use pointerdown for mobile
+  modalOverlay.addEventListener('pointerdown', e => {
     if (e.target === modalOverlay) closeAddModal();
   });
-  editOverlay.addEventListener('click', e => {
+  editOverlay.addEventListener('pointerdown', e => {
     if (e.target === editOverlay) closeEditModal();
   });
 }
 
 // ── Visual viewport: push page up when keyboard appears ───────────────────
-// Fallback for browsers that don't support interactive-widget=resizes-content
 if (window.visualViewport) {
   window.visualViewport.addEventListener('resize', () => {
     const offset = window.innerHeight - window.visualViewport.height;
     document.body.style.marginBottom = offset > 0 ? offset + 'px' : '';
     if (offset > 50) {
-      // Scroll focused element into view after a short delay
       const el = document.activeElement;
       if (el && el !== document.body) {
         setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'center' }), 50);

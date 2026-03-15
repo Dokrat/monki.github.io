@@ -14,6 +14,15 @@
   </header>
 
   <main>
+    <!-- Import from string -->
+    <section class="card">
+      <div class="section-header">
+        <span class="field-label">Load plan from string</span>
+      </div>
+      <textarea id="importInput" class="plan-output" rows="3" placeholder="Paste existing plan config string here…"></textarea>
+      <button class="btn-import" id="btnImport">Load &amp; Edit</button>
+    </section>
+
     <!-- Plan name -->
     <section class="card">
       <label class="field-label" for="planName">Plan Name</label>
@@ -45,23 +54,35 @@
 
   <!-- Generated config output -->
   <section class="card" id="outputSection" style="display:none">
-    <div class="field-label">Config String — all plans</div>
+    <div class="section-header">
+      <span class="field-label">Config String — all plans</span>
+      <button class="btn-close-section" id="btnCloseOutput" title="Close">✕</button>
+    </div>
     <textarea id="planOutput" class="plan-output" readonly rows="5"></textarea>
     <button class="btn-copy" id="btnCopy">Copy to clipboard</button>
     <div class="output-hint">
       <strong>How to use on your watch:</strong><br>
       1. Copy the string above.<br>
       2. Open <strong>Garmin Connect Mobile</strong> → My Device → Apps → <em>GymWorkoutTimer</em> → Settings.<br>
-      3. Paste the string into the <em>Plan Configuration</em> field and tap Save.<br>
+      3. Paste into the <em>Plan Configuration</em> field and tap Save.<br>
       4. Sync your watch — all plans will appear in the SELECT PLAN screen.
     </div>
+  </section>
+
+  <!-- Config string history -->
+  <section class="card" id="historySection" style="display:none">
+    <div class="section-header">
+      <span class="field-label">Config History</span>
+      <button class="btn-close-section" id="btnClearHistory" title="Clear history">✕</button>
+    </div>
+    <div id="historyList"></div>
   </section>
 
   <footer>
     <button class="btn-save" id="btnSave">Add Plan to List</button>
   </footer>
 
-  <!-- Search modal -->
+  <!-- Search / Add modal -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal">
       <div class="modal-header">
@@ -74,30 +95,23 @@
         <button class="tab" data-tab="custom">Custom</button>
       </div>
 
-      <!-- Library tab -->
       <div class="tab-content" id="tabList">
         <div class="search-box">
           <input type="text" id="searchInput" class="text-input" placeholder="Search exercises…" autocomplete="off">
         </div>
         <div class="filter-row">
-          <select id="filterMuscle" class="select-input">
-            <option value="">All muscles</option>
-          </select>
-          <select id="filterEquip" class="select-input">
-            <option value="">All equipment</option>
-          </select>
+          <select id="filterMuscle" class="select-input"><option value="">All muscles</option></select>
+          <select id="filterEquip" class="select-input"><option value="">All equipment</option></select>
         </div>
         <ul id="searchResults" class="search-results"></ul>
       </div>
 
-      <!-- Custom tab -->
       <div class="tab-content hidden" id="tabCustom">
         <label class="field-label" for="customName">Exercise Name</label>
         <input type="text" id="customName" class="text-input" placeholder="e.g. Cable Fly" maxlength="30">
         <button class="btn-primary" id="btnAddCustom">Add</button>
       </div>
 
-      <!-- Sets / Reps / Rest — shown after exercise selected -->
       <div class="params-panel hidden" id="paramsPanel">
         <div class="selected-name" id="selectedName"></div>
         <div class="params-grid">
@@ -107,13 +121,24 @@
           </div>
           <div class="param-field">
             <label class="field-label">Reps</label>
-            <input type="number" id="paramReps" class="num-input" value="10" min="1" max="100">
+            <input type="number" id="paramReps" class="num-input" value="10" min="0" max="100">
           </div>
           <div class="param-field">
             <label class="field-label">Rest (s)</label>
             <input type="number" id="paramRest" class="num-input" value="60" min="0" max="600" step="5">
           </div>
         </div>
+        <div class="params-grid params-grid-2">
+          <div class="param-field">
+            <label class="field-label">Work time (s)</label>
+            <input type="number" id="paramWorkTime" class="num-input" value="0" min="0" max="600" step="5">
+          </div>
+          <div class="param-field checkbox-field">
+            <label class="field-label">MAX reps</label>
+            <input type="checkbox" id="paramRepsMax" class="checkbox-input">
+          </div>
+        </div>
+        <p class="params-hint">Work time 0 = no limit &nbsp;·&nbsp; MAX reps = until failure</p>
         <button class="btn-primary" id="btnConfirmAdd">Add to Plan</button>
       </div>
     </div>
@@ -134,12 +159,27 @@
         </div>
         <div class="param-field">
           <label class="field-label">Reps</label>
-          <input type="number" id="editReps" class="num-input" min="1" max="100">
+          <input type="number" id="editReps" class="num-input" min="0" max="100">
         </div>
         <div class="param-field">
           <label class="field-label">Rest (s)</label>
           <input type="number" id="editRest" class="num-input" min="0" max="600" step="5">
         </div>
+      </div>
+      <div class="params-grid params-grid-2">
+        <div class="param-field">
+          <label class="field-label">Work time (s)</label>
+          <input type="number" id="editWorkTime" class="num-input" min="0" max="600" step="5">
+        </div>
+        <div class="param-field checkbox-field">
+          <label class="field-label">MAX reps</label>
+          <input type="checkbox" id="editRepsMax" class="checkbox-input">
+        </div>
+      </div>
+      <p class="params-hint">Work time 0 = no limit &nbsp;·&nbsp; MAX reps = until failure</p>
+      <div class="edit-reorder">
+        <button class="btn-reorder" id="btnMoveUp">▲ Move up</button>
+        <button class="btn-reorder" id="btnMoveDown">▼ Move down</button>
       </div>
       <button class="btn-primary" id="btnConfirmEdit">Save Changes</button>
       <button class="btn-danger" id="btnDeleteExercise">Remove Exercise</button>
