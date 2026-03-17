@@ -342,7 +342,6 @@ function addCustom() {
   const name = $('customName').value.trim();
   if (!name) return;
   selectExercise(name);
-  switchTab('list');
 }
 
 // ── Edit flow ─────────────────────────────────────────────────────────────
