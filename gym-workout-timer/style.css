@@ -403,6 +403,181 @@ body {
   color: #3a3a3a;
 }
 
+/* ─── Section intro ─── */
+.section-intro {
+  font-size: 0.87rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 0.25rem;
+}
+
+/* ─── Sub-options (library / custom) ─── */
+.sub-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+.sub-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  background: #141414;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.65rem 0.85rem;
+}
+
+.sub-badge {
+  flex-shrink: 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--gold), #a07c18);
+  color: #0f0f0f;
+  border-radius: 6px;
+  padding: 0.2rem 0.55rem;
+  white-space: nowrap;
+  margin-top: 0.05rem;
+}
+
+.sub-badge--alt {
+  background: linear-gradient(135deg, #4a4a4a, #2e2e2e);
+  color: var(--text-muted);
+}
+
+.sub-option-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* ─── Params explain grid ─── */
+.params-explain-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+.param-explain-card {
+  background: #141414;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.param-explain-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.param-explain-val {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.param-explain-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-top: 0.1rem;
+}
+
+.step-hint {
+  font-size: 0.8rem;
+  color: #555;
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-left: 2px solid var(--gold);
+  background: #141414;
+  border-radius: 0 8px 8px 0;
+}
+
+.step-hint code {
+  font-family: monospace;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* ─── Feature list (plan list section) ─── */
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+}
+
+.feature-icon {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+}
+
+.feature-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.feature-icon--edit     { background: #1a1f12; color: #7ec85a; border-color: #2e3d20; }
+.feature-icon--delete   { background: #1f1212; color: #c85a5a; border-color: #3d2020; }
+.feature-icon--generate { background: #12181f; color: #5a9ec8; border-color: #20303d; }
+.feature-icon--history  { background: #1a1218; color: #b07ec8; border-color: #3a2040; }
+
+.feature-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.feature-text strong {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.feature-text span {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* ─── Code inline ─── */
+code {
+  font-family: "Courier New", monospace;
+  font-size: 0.75rem;
+  background: #1f1f1f;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+  color: var(--text-muted);
+  word-break: break-all;
+}
+
 /* ─── Responsive ─── */
 @media (max-width: 500px) {
   .app-hero {
@@ -423,5 +598,9 @@ body {
   .page-content {
     padding: 1.8rem 1rem 2.5rem;
     gap: 2rem;
+  }
+
+  .params-explain-grid {
+    grid-template-columns: 1fr;
   }
 }

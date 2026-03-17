@@ -3,25 +3,25 @@ const i18n = {
     tagline:   'Simple apps. Serious results.',
     gwt_desc:  'Twórz plany treningowe używane przez aplikację Gym Workout Timer w Garmin Connect IQ.',
     contact:   'Kontakt',
-    copyright: '© 2026 MonkiApps. Wszelkie prawa zastrzeżone.',
+    copyright: '© 2026 MonkiAppps. Wszelkie prawa zastrzeżone.',
   },
   en: {
     tagline:   'Simple apps. Serious results.',
     gwt_desc:  'Build workout plans used by the Gym Workout Timer app on Garmin Connect IQ.',
     contact:   'Contact',
-    copyright: '© 2026 MonkiApps. All rights reserved.',
+    copyright: '© 2026 MonkiAppps. All rights reserved.',
   },
   de: {
     tagline:   'Einfache Apps. Ernste Ergebnisse.',
     gwt_desc:  'Erstelle Trainingspläne für die Gym Workout Timer App auf Garmin Connect IQ.',
     contact:   'Kontakt',
-    copyright: '© 2026 MonkiApps. Alle Rechte vorbehalten.',
+    copyright: '© 2026 MonkiAppps. Alle Rechte vorbehalten.',
   },
   es: {
     tagline:   'Apps simples. Resultados serios.',
     gwt_desc:  'Crea planes de entrenamiento para la app Gym Workout Timer en Garmin Connect IQ.',
     contact:   'Contacto',
-    copyright: '© 2026 MonkiApps. Todos los derechos reservados.',
+    copyright: '© 2026 MonkiAppps. Todos los derechos reservados.',
   },
 };
 
