@@ -4,10 +4,11 @@ const PROP_KEY = 'planConfig';
 const HISTORY_KEY = 'gymtimerConfigHistory';
 
 // ── Serialization ──────────────────────────────────────────────────────────
-// Format: "PlanName|ExName,sets,reps,rest,workTime|..."
-// reps=0 → MAX; workTime=0 → no limit
+// Format: "PlanName|LOOPS:N|ExName,sets,reps,rest,workTime|..."
+// LOOPS token is optional (omitted when loops=1); reps=0 → MAX; workTime=0 → no limit
 function serializePlan(p) {
   const parts = [p.planName || 'My Plan'];
+  if (p.loops && p.loops > 1) parts.push(`LOOPS:${p.loops}`);
   (p.exercises || []).forEach(e => {
     parts.push(`${e.name},${e.sets},${e.reps},${e.rest},${e.workTime || 0}`);
   });
@@ -18,8 +19,13 @@ function deserializePlan(raw) {
   if (!raw) return null;
   const parts = raw.split('|');
   if (parts.length < 1) return null;
-  const p = { planName: parts[0], exercises: [] };
-  for (let i = 1; i < parts.length; i++) {
+  const p = { planName: parts[0], exercises: [], loops: 1 };
+  let startIdx = 1;
+  if (parts.length > 1 && parts[1].startsWith('LOOPS:')) {
+    p.loops = parseInt(parts[1].slice(6)) || 1;
+    startIdx = 2;
+  }
+  for (let i = startIdx; i < parts.length; i++) {
     const f = parts[i].split(',');
     if (f.length >= 4) {
       p.exercises.push({
@@ -64,7 +70,7 @@ const GarminSDK = (() => {
 
 // ── State ──────────────────────────────────────────────────────────────────
 let allExercises    = [];
-let plan            = { planName: '', exercises: [] };
+let plan            = { planName: '', exercises: [], loops: 1 };
 let savedPlans      = [];
 let pendingExercise = null;
 let editingIndex    = null;
@@ -178,10 +184,11 @@ function renderPlanList() {
   savedPlans.forEach((p, i) => {
     const card = document.createElement('div');
     card.className = 'plan-card';
+    const loopMeta = p.loops > 1 ? ` · ${p.loops}× loop` : '';
     card.innerHTML = `
       <div class="plan-card-info">
         <div class="plan-card-name">${p.planName}</div>
-        <div class="plan-card-meta">${p.exercises.length} exercise${p.exercises.length !== 1 ? 's' : ''}</div>
+        <div class="plan-card-meta">${p.exercises.length} exercise${p.exercises.length !== 1 ? 's' : ''}${loopMeta}</div>
       </div>
       <button class="btn-remove-plan" data-index="${i}" title="Remove plan">✕</button>
     `;
@@ -250,6 +257,7 @@ function importString(raw) {
   }
   plan = firstPlan;
   planNameEl.value = plan.planName;
+  _restoreLoopUI(plan.loops);
   renderExerciseList();
   $('importInput').value = '';
   showToast(`"${plan.planName}" loaded into editor ✓`);
@@ -259,8 +267,9 @@ function importString(raw) {
 // ── Load plan from list into editor ───────────────────────────────────────
 function loadPlanIntoEditor(index) {
   const p = savedPlans[index];
-  plan = { planName: p.planName, exercises: p.exercises.map(e => ({ ...e })) };
+  plan = { planName: p.planName, exercises: p.exercises.map(e => ({ ...e })), loops: p.loops || 1 };
   planNameEl.value = plan.planName;
+  _restoreLoopUI(plan.loops);
   renderExerciseList();
   showToast(`"${plan.planName}" loaded into editor`);
   planNameEl.scrollIntoView({ behavior: 'smooth' });
@@ -403,9 +412,13 @@ function addPlanToList() {
     showToast('Add at least one exercise first.');
     return;
   }
-  savedPlans.push({ planName: name, exercises: [...plan.exercises] });
-  plan = { planName: '', exercises: [] };
+  const loopEnabled = $('loopEnabled').checked;
+  const loops = loopEnabled ? (parseInt($('loopCount').value) || 2) : 1;
+  savedPlans.push({ planName: name, exercises: [...plan.exercises], loops });
+  plan = { planName: '', exercises: [], loops: 1 };
   planNameEl.value = '';
+  $('loopEnabled').checked = false;
+  $('loopCountWrap').classList.add('hidden');
   renderExerciseList();
   renderPlanList();
   showToast(`"${name}" added to list ✓`);
@@ -467,6 +480,14 @@ function copyText(val, msg) {
     });
 }
 
+// ── Loop UI helper ────────────────────────────────────────────────────────
+function _restoreLoopUI(loops) {
+  const enabled = loops > 1;
+  $('loopEnabled').checked = enabled;
+  if (enabled) $('loopCount').value = loops;
+  $('loopCountWrap').classList.toggle('hidden', !enabled);
+}
+
 // ── Helpers ───────────────────────────────────────────────────────────────
 function capitalize(str) {
   if (!str) return '';
@@ -499,6 +520,11 @@ function bindEvents() {
   $('btnDeleteExercise').addEventListener('click', deleteExercise);
   $('btnMoveUp').addEventListener('click', () => moveExercise(-1));
   $('btnMoveDown').addEventListener('click', () => moveExercise(1));
+
+  // Loop training checkbox
+  $('loopEnabled').addEventListener('change', e => {
+    $('loopCountWrap').classList.toggle('hidden', !e.target.checked);
+  });
 
   // MAX reps checkbox syncs with reps field
   $('paramRepsMax').addEventListener('change', e => {

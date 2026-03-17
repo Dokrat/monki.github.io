@@ -34,6 +34,15 @@
       <div class="section-header">
         <span class="field-label">Exercises</span>
         <span id="exerciseCount" class="badge">0</span>
+        <div class="loop-control" style="margin-left:auto;display:flex;align-items:center;gap:8px;">
+          <label style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-dim);cursor:pointer;">
+            <input type="checkbox" id="loopEnabled"> Loop training
+          </label>
+          <div id="loopCountWrap" class="hidden" style="display:flex;align-items:center;gap:4px;">
+            <input type="number" id="loopCount" class="num-input" value="2" min="2" max="20" style="width:52px;">
+            <span style="font-size:12px;color:var(--text-dim);">×</span>
+          </div>
+        </div>
       </div>
       <ul id="exerciseList" class="exercise-list">
         <li class="empty-state" id="emptyState">No exercises added yet</li>
