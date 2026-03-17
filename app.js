@@ -418,7 +418,7 @@ function addPlanToList() {
   plan = { planName: '', exercises: [], loops: 1 };
   planNameEl.value = '';
   $('loopEnabled').checked = false;
-  $('loopCountWrap').classList.add('hidden');
+  $('loopCountWrap').style.display = 'none';
   renderExerciseList();
   renderPlanList();
   showToast(`"${name}" added to list ✓`);
@@ -485,7 +485,7 @@ function _restoreLoopUI(loops) {
   const enabled = loops > 1;
   $('loopEnabled').checked = enabled;
   if (enabled) $('loopCount').value = loops;
-  $('loopCountWrap').classList.toggle('hidden', !enabled);
+  $('loopCountWrap').style.display = enabled ? 'flex' : 'none';
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────
@@ -523,7 +523,7 @@ function bindEvents() {
 
   // Loop training checkbox
   $('loopEnabled').addEventListener('change', e => {
-    $('loopCountWrap').classList.toggle('hidden', !e.target.checked);
+    $('loopCountWrap').style.display = e.target.checked ? 'flex' : 'none';
   });
 
   // MAX reps checkbox syncs with reps field
