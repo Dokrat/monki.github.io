@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gym Workout Timer – MonkiApps</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="back-btn" title="Wróć">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </a>
+      <a href="../index.html" class="logo">🐒 MonkiApps</a>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="pl">PL</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="de">DE</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+  </header>
+
+  <main class="page-content">
+
+    <!-- App hero -->
+    <section class="app-hero">
+      <div class="hero-img-wrap">
+        <img src="../resources/GymWorkoutTimer.png" alt="Gym Workout Timer">
+      </div>
+      <div class="hero-text">
+        <h1 class="app-title">Gym Workout Timer</h1>
+        <p class="app-platform">Garmin Connect IQ</p>
+        <p class="app-tagline" data-i18n="hero_tagline">Aplikacja na zegarki Garmin do prowadzenia treningów siłowych.</p>
+      </div>
+    </section>
+
+    <!-- Settings UI tile -->
+    <section class="section-block">
+      <h2 class="section-title" data-i18n="settings_heading">Konfiguracja planów treningowych</h2>
+      <a href="../settings-ui/index.html" class="settings-tile">
+        <div class="settings-tile-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9"/>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>
+          </svg>
+        </div>
+        <div class="settings-tile-body">
+          <span class="settings-tile-title" data-i18n="settings_tile_title">Settings UI</span>
+          <span class="settings-tile-desc" data-i18n="settings_tile_desc">Twórz plany, konfiguruj ćwiczenia i generuj ciąg konfiguracyjny do aplikacji.</span>
+        </div>
+        <div class="settings-tile-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </div>
+      </a>
+    </section>
+
+    <!-- About -->
+    <section class="section-block">
+      <h2 class="section-title" data-i18n="about_heading">O aplikacji</h2>
+      <div class="info-card">
+        <p data-i18n="about_p1">Gym Workout Timer to aplikacja na zegarki Garmin z platformą Connect IQ, która prowadzi Cię krok po kroku przez trening siłowy na siłowni.</p>
+        <p data-i18n="about_p2">Wyświetla nazwę ćwiczenia, numer aktualnej serii i automatycznie odlicza czas odpoczynku między seriami — tak abyś mógł skupić się wyłącznie na treningu.</p>
+        <p data-i18n="about_p3">Plany treningowe konfigurujesz za pomocą Settings UI w przeglądarce, a następnie wgrywasz je do aplikacji przez Garmin Connect Mobile.</p>
+      </div>
+    </section>
+
+    <!-- How to use -->
+    <section class="section-block">
+      <h2 class="section-title" data-i18n="howto_heading">Jak używać</h2>
+      <ol class="steps-list">
+        <li class="step-item">
+          <span class="step-num">1</span>
+          <div class="step-body">
+            <strong data-i18n="step1_title">Otwórz Settings UI</strong>
+            <p data-i18n="step1_desc">Skorzystaj z kafelka powyżej lub przycisku poniżej, aby wejść w konfigurację planów.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">2</span>
+          <div class="step-body">
+            <strong data-i18n="step2_title">Utwórz plan treningowy</strong>
+            <p data-i18n="step2_desc">Dodaj ćwiczenia z biblioteki lub własne, ustaw serie, powtórzenia i czas odpoczynku. Dodaj plan do listy.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">3</span>
+          <div class="step-body">
+            <strong data-i18n="step3_title">Generuj ciąg konfiguracyjny</strong>
+            <p data-i18n="step3_desc">Kliknij „Generate Config String" i skopiuj wygenerowany tekst do schowka.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">4</span>
+          <div class="step-body">
+            <strong data-i18n="step4_title">Wklej do Garmin Connect Mobile</strong>
+            <p data-i18n="step4_desc">W aplikacji Garmin Connect Mobile przejdź do: Moje Urządzenie → Aplikacje → GymWorkoutTimer → Ustawienia. Wklej skopiowany tekst w pole „Plan Configuration" i zapisz.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">5</span>
+          <div class="step-body">
+            <strong data-i18n="step5_title">Zsynchronizuj zegarek</strong>
+            <p data-i18n="step5_desc">Zsynchronizuj zegarek z Garmin Connect. Plany pojawią się na ekranie wyboru w aplikacji.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">6</span>
+          <div class="step-body">
+            <strong data-i18n="step6_title">Trenuj!</strong>
+            <p data-i18n="step6_desc">Wybierz plan na zegarku, naciśnij Start i pozwól aplikacji prowadzić Cię przez trening.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Requirements -->
+    <section class="section-block">
+      <h2 class="section-title" data-i18n="req_heading">Wymagania</h2>
+      <div class="info-card req-list">
+        <div class="req-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <span data-i18n="req1">Zegarek Garmin z obsługą Connect IQ</span>
+        </div>
+        <div class="req-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+          </svg>
+          <span data-i18n="req2">Aplikacja Garmin Connect Mobile (iOS lub Android)</span>
+        </div>
+        <div class="req-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <span data-i18n="req3">Przeglądarka internetowa (do Settings UI)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-wrap">
+      <a href="../settings-ui/index.html" class="btn-cta" data-i18n="cta_btn">Otwórz Settings UI</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a href="mailto:monki.appps@gmail.com" class="footer-link" data-i18n="contact">Kontakt</a>
+      <p class="copyright" data-i18n="copyright">© 2026 MonkiApps. Wszelkie prawa zastrzeżone.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
