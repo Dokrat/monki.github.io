@@ -5,6 +5,13 @@ const i18n = {
     settings_tile_title:  'Settings UI',
     settings_tile_desc:   'Twórz plany, konfiguruj ćwiczenia i generuj ciąg konfiguracyjny do aplikacji.',
 
+    // ── Wsparcie ──
+    support_heading:      'Wsparcie aplikacji',
+    support_tile_title:   'Pomoc techniczna',
+    support_tile_desc:    'Masz problem? Napisz e-mail z opisem oraz ID urządzenia (Ustawienia → System → O systemie)',
+    support_suppi_desc:   'Wspomóż rozwój poprzez subskrypcję',
+    support_kofi_desc:    'Jednorazowe wsparcie dla rozwoju projektu',
+
     // ── Zalety ──
     zalety_heading: 'Zalety',
     adv1_title: 'Żadnych dodatkowych aplikacji',
@@ -22,7 +29,7 @@ const i18n = {
     adv4_title: 'Plan treningowy jako aktywna lista',
     adv4_desc:  'Ćwiczenia wyświetlane kolejno — zawsze wiesz co teraz i co dalej.',
     adv5_title: 'Wykres HR',
-    adv5_desc:  'Podgląd tętna w formie wykresu po zakończeniu treningu.',
+    adv5_desc:  'Podgląd tętna w formie wykresu — zarówno w trakcie treningu, jak i po jego zakończeniu.',
 
     // ── Konfiguracja ──
     config_heading: 'Konfiguracja',
@@ -93,7 +100,6 @@ const i18n = {
 
     req_heading: 'Wymagania',
     req1: 'Zegarek Garmin z obsługą Connect IQ',
-    req2: 'Aplikacja Garmin Connect Mobile (iOS lub Android)',
     req3: 'Przeglądarka internetowa (do Settings UI)',
     cta_btn:   'Otwórz Settings UI',
     contact:   'Kontakt',
@@ -105,6 +111,13 @@ const i18n = {
     settings_heading:     'Workout Plan Configuration',
     settings_tile_title:  'Settings UI',
     settings_tile_desc:   'Build plans, configure exercises, and generate a config string for the app.',
+
+    // ── Support ──
+    support_heading:      'App Support',
+    support_tile_title:   'Technical Help',
+    support_tile_desc:    'Having issues? Send an email with a description and your device ID (Settings → System → About Device)',
+    support_suppi_desc:   'Support development through a subscription',
+    support_kofi_desc:    'One-time support for project development',
 
     // ── Benefits ──
     zalety_heading: 'Benefits',
@@ -123,7 +136,7 @@ const i18n = {
     adv4_title: 'Workout plan as an active list',
     adv4_desc:  'Exercises displayed one by one — you always know what\'s now and what\'s next.',
     adv5_title: 'HR chart',
-    adv5_desc:  'Heart rate chart overview after finishing the workout.',
+    adv5_desc:  'Heart rate chart available both during the workout and after it ends.',
 
     // ── Features ──
     config_heading: 'Features',
@@ -194,7 +207,6 @@ const i18n = {
 
     req_heading: 'Requirements',
     req1: 'Garmin watch with Connect IQ support',
-    req2: 'Garmin Connect Mobile app (iOS or Android)',
     req3: 'A web browser (for the Settings UI)',
     cta_btn:   'Open Settings UI',
     contact:   'Contact',
@@ -206,6 +218,13 @@ const i18n = {
     settings_heading:     'Trainingsplan-Konfiguration',
     settings_tile_title:  'Settings UI',
     settings_tile_desc:   'Pläne erstellen, Übungen konfigurieren und einen Konfigurations-String generieren.',
+
+    // ── Support ──
+    support_heading:      'App-Unterstützung',
+    support_tile_title:   'Technische Hilfe',
+    support_tile_desc:    'Hast du Probleme? Sende eine E-Mail mit einer Beschreibung und deiner Geräte-ID (Einstellungen → System → Über)',
+    support_suppi_desc:   'Unterstütze die Entwicklung durch ein Abonnement',
+    support_kofi_desc:    'Einmalige Unterstützung für die Projektentwicklung',
 
     // ── Vorteile ──
     zalety_heading: 'Vorteile',
@@ -224,7 +243,7 @@ const i18n = {
     adv4_title: 'Trainingsplan als aktive Liste',
     adv4_desc:  'Übungen werden nacheinander angezeigt — du weißt immer, was jetzt und was als nächstes kommt.',
     adv5_title: 'HR-Diagramm',
-    adv5_desc:  'Herzfrequenzdiagramm nach Abschluss des Trainings.',
+    adv5_desc:  'Herzfrequenzdiagramm — sowohl während des Trainings als auch danach abrufbar.',
 
     // ── Funktionen ──
     config_heading: 'Funktionen',
@@ -295,7 +314,6 @@ const i18n = {
 
     req_heading: 'Voraussetzungen',
     req1: 'Garmin-Uhr mit Connect IQ Unterstützung',
-    req2: 'Garmin Connect Mobile App (iOS oder Android)',
     req3: 'Webbrowser (für das Settings UI)',
     cta_btn:   'Settings UI öffnen',
     contact:   'Kontakt',
@@ -307,6 +325,13 @@ const i18n = {
     settings_heading:     'Configuración de planes de entrenamiento',
     settings_tile_title:  'Settings UI',
     settings_tile_desc:   'Crea planes, configura ejercicios y genera la cadena de configuración para la app.',
+
+    // ── Soporte ──
+    support_heading:      'Soporte de la app',
+    support_tile_title:   'Ayuda técnica',
+    support_tile_desc:    '¿Tienes problemas? Envía un correo con una descripción e ID de dispositivo (Ajustes → Sistema → Acerca de)',
+    support_suppi_desc:   'Apoya el desarrollo con una suscripción',
+    support_kofi_desc:    'Apoyo único para el desarrollo del proyecto',
 
     // ── Ventajas ──
     zalety_heading: 'Ventajas',
@@ -325,7 +350,7 @@ const i18n = {
     adv4_title: 'Plan de entrenamiento como lista activa',
     adv4_desc:  'Los ejercicios se muestran uno a uno — siempre sabes qué hay ahora y qué viene después.',
     adv5_title: 'Gráfico HR',
-    adv5_desc:  'Vista del gráfico de frecuencia cardíaca al finalizar el entrenamiento.',
+    adv5_desc:  'Gráfico de frecuencia cardíaca disponible tanto durante el entrenamiento como al finalizarlo.',
 
     // ── Características ──
     config_heading: 'Características',
@@ -396,7 +421,6 @@ const i18n = {
 
     req_heading: 'Requisitos',
     req1: 'Reloj Garmin con soporte Connect IQ',
-    req2: 'App Garmin Connect Mobile (iOS o Android)',
     req3: 'Navegador web (para el Settings UI)',
     cta_btn:   'Abrir Settings UI',
     contact:   'Contacto',
