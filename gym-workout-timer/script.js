@@ -1,6 +1,6 @@
 const i18n = {
   pl: {
-    hero_tagline:         'Aplikacja na zegarki Garmin do prowadzenia treningów siłowych.',
+    hero_tagline:         'Aplikacja do konfiguracji oraz prowadzenia treningów siłowych, prosta i szybka.',
     settings_heading:     'Konfiguracja planów treningowych',
     settings_tile_title:  'Settings UI',
     settings_tile_desc:   'Twórz plany, konfiguruj ćwiczenia i generuj ciąg konfiguracyjny do aplikacji.',
@@ -78,7 +78,7 @@ const i18n = {
     list_f4_desc:  'Ostatnie 10 wygenerowanych ciągów jest zapisywane automatycznie. Możesz je skopiować lub wczytać w dowolnym momencie.',
 
     // ── Wczytywanie z ciągu ──
-    import_heading: 'Wczytywanie planu z ciągu',
+    import_heading: 'Wczytywanie wcześniej przygotowanego planu z wyrażenia tekstowego',
     import_intro:   'Masz gotowy ciąg konfiguracyjny z poprzedniej sesji lub od innej osoby? Załadujesz go bez ręcznego wpisywania ćwiczeń.',
     imp_s1_title: 'Wklej ciąg w pole na górze',
     imp_s1_desc:  'W sekcji „Load plan from string" wklej skopiowany ciąg konfiguracyjny.',
@@ -105,7 +105,7 @@ const i18n = {
   },
 
   en: {
-    hero_tagline:         'A Garmin watch app for guided strength training.',
+    hero_tagline:         'A simple and fast app for configuring and running strength workouts.',
     settings_heading:     'Workout Plan Configuration',
     settings_tile_title:  'Settings UI',
     settings_tile_desc:   'Build plans, configure exercises, and generate a config string for the app.',
@@ -183,7 +183,7 @@ const i18n = {
     list_f4_desc:  'The last 10 generated strings are saved automatically. You can copy or reload any of them at any time.',
 
     // ── Import from string ──
-    import_heading: 'Loading a Plan from a String',
+    import_heading: 'Loading a previously prepared plan from a text expression',
     import_intro:   'Have a config string from a previous session or from someone else? Load it without typing exercises manually.',
     imp_s1_title: 'Paste the string at the top',
     imp_s1_desc:  'In the "Load plan from string" section, paste your copied config string.',
@@ -210,7 +210,7 @@ const i18n = {
   },
 
   de: {
-    hero_tagline:         'Eine Garmin-Uhren-App für geführtes Krafttraining.',
+    hero_tagline:         'Eine einfache und schnelle App zur Konfiguration und Durchführung von Krafttrainings.',
     settings_heading:     'Trainingsplan-Konfiguration',
     settings_tile_title:  'Settings UI',
     settings_tile_desc:   'Pläne erstellen, Übungen konfigurieren und einen Konfigurations-String generieren.',
@@ -288,7 +288,7 @@ const i18n = {
     list_f4_desc:  'Die letzten 10 generierten Strings werden automatisch gespeichert. Jederzeit kopieren oder neu laden.',
 
     // ── Import ──
-    import_heading: 'Plan aus String laden',
+    import_heading: 'Einen zuvor vorbereiteten Plan aus einem Textausdruck laden',
     import_intro:   'Du hast einen fertigen Config-String aus einer früheren Sitzung oder von jemand anderem? Lade ihn ohne manuelle Eingabe der Übungen.',
     imp_s1_title: 'String oben einfügen',
     imp_s1_desc:  'Im Abschnitt „Load plan from string" den kopierten Config-String einfügen.',
@@ -315,7 +315,7 @@ const i18n = {
   },
 
   es: {
-    hero_tagline:         'Una app para relojes Garmin para entrenamientos de fuerza guiados.',
+    hero_tagline:         'Una app sencilla y rápida para configurar y realizar entrenamientos de fuerza.',
     settings_heading:     'Configuración de planes de entrenamiento',
     settings_tile_title:  'Settings UI',
     settings_tile_desc:   'Crea planes, configura ejercicios y genera la cadena de configuración para la app.',
@@ -393,7 +393,7 @@ const i18n = {
     list_f4_desc:  'Las últimas 10 cadenas generadas se guardan automáticamente. Puedes copiarlas o recargarlas en cualquier momento.',
 
     // ── Importar ──
-    import_heading: 'Cargar un plan desde una cadena',
+    import_heading: 'Cargar un plan previamente preparado desde una expresión de texto',
     import_intro:   '¿Tienes una cadena de configuración de una sesión anterior o de otra persona? Cárgala sin introducir ejercicios manualmente.',
     imp_s1_title: 'Pega la cadena arriba',
     imp_s1_desc:  'En la sección "Load plan from string" pega la cadena de configuración copiada.',

@@ -27,7 +27,7 @@
 
   <main class="page-content">
 
-    <!-- App hero -->
+    <!-- ═══ App hero ═══ -->
     <section class="app-hero">
       <div class="hero-img-wrap">
         <img src="../resources/GymWorkoutTimer.png" alt="Gym Workout Timer">
@@ -35,123 +35,63 @@
       <div class="hero-text">
         <h1 class="app-title">Gym Workout Timer</h1>
         <p class="app-platform">Garmin Connect IQ</p>
-        <p class="app-tagline" data-i18n="hero_tagline">Aplikacja na zegarki Garmin do prowadzenia treningów siłowych.</p>
       </div>
     </section>
 
-    <!-- Settings UI tile -->
-    <section class="section-block">
-      <h2 class="section-title" data-i18n="settings_heading">Konfiguracja planów treningowych</h2>
-      <a href="../settings-ui/index.html" class="settings-tile">
-        <div class="settings-tile-icon">
+    <!-- ═══ 1. O aplikacji ═══ -->
+    <div class="card">
+      <p class="card-tagline" data-i18n="hero_tagline">Aplikacja do konfiguracji oraz prowadzenia treningów siłowych, prosta i szybka.</p>
+      <ul class="card-features">
+        <li>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 20h9"/>
-            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
           </svg>
-        </div>
-        <div class="settings-tile-body">
-          <span class="settings-tile-title" data-i18n="settings_tile_title">Settings UI</span>
-          <span class="settings-tile-desc" data-i18n="settings_tile_desc">Twórz plany, konfiguruj ćwiczenia i generuj ciąg konfiguracyjny do aplikacji.</span>
-        </div>
-        <div class="settings-tile-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="9 18 15 12 9 6"/>
-          </svg>
-        </div>
-      </a>
-    </section>
-
-    <!-- Support tile -->
-    <section class="section-block">
-      <h2 class="section-title" data-i18n="support_heading">Wsparcie</h2>
-      <a href="support/index.html" class="settings-tile">
-        <div class="settings-tile-icon">
+          <div>
+            <strong data-i18n="adv3_title">Najważniejsze dane podczas treningu w jednym miejscu</strong>
+            <div class="chips">
+              <span data-i18n="wd1">HR zones</span>
+              <span data-i18n="wd2">Nr ćwiczenia / nr obwodu</span>
+              <span data-i18n="wd3">Czas przerwy / czas pracy</span>
+              <span data-i18n="wd4">Aktualne ćwiczenie / następne ćwiczenie</span>
+              <span data-i18n="wd5">Czas całego treningu</span>
+              <span data-i18n="wd6">Zegar</span>
+            </div>
+          </div>
+        </li>
+        <li>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
+            <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
           </svg>
-        </div>
-        <div class="settings-tile-body">
-          <span class="settings-tile-title" data-i18n="support_tile_title">Wesprzyj aplikację</span>
-          <span class="settings-tile-desc" data-i18n="support_tile_desc">Wybierz sposób wsparcia — Suppi/Patronite lub Ko-fi.</span>
-        </div>
-        <div class="settings-tile-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="9 18 15 12 9 6"/>
+          <div>
+            <strong data-i18n="adv4_title">Plan treningowy jako aktywna lista</strong>
+            <p data-i18n="adv4_desc">Ćwiczenia wyświetlane kolejno — zawsze wiesz co teraz i co dalej.</p>
+          </div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
           </svg>
-        </div>
-      </a>
-    </section>
-
-    <!-- Zalety -->
-    <section class="section-block">
-      <h2 class="section-title" data-i18n="zalety_heading">Zalety</h2>
-      <div class="adv-grid">
-
-        <div class="adv-card">
-          <div class="adv-card-icon adv-icon--check">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12"/>
-            </svg>
+          <div>
+            <strong data-i18n="adv1_title">Żadnych dodatkowych aplikacji</strong>
+            <p data-i18n="adv1_desc">Działa bez żadnych zewnętrznych aplikacji na iOS ani Android — potrzebujesz tylko zegarka Garmin i przeglądarki.</p>
           </div>
-          <strong data-i18n="adv1_title">Żadnych dodatkowych aplikacji</strong>
-          <p data-i18n="adv1_desc">Działa bez żadnych zewnętrznych aplikacji na iOS ani Android — potrzebujesz tylko zegarka Garmin i przeglądarki.</p>
-        </div>
-
-        <div class="adv-card">
-          <div class="adv-card-icon adv-icon--edit">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>
-            </svg>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>
+          </svg>
+          <div>
+            <strong data-i18n="adv2_title">Szybka konfiguracja</strong>
+            <p data-i18n="adv2_desc">Plany tworzysz w przeglądarce przez Settings UI — bez instalacji czegokolwiek.</p>
           </div>
-          <strong data-i18n="adv2_title">Szybka konfiguracja</strong>
-          <p data-i18n="adv2_desc">Plany tworzysz w przeglądarce przez Settings UI — bez instalacji czegokolwiek.</p>
-          <a href="../settings-ui/index.html" class="adv-link" data-i18n="adv2_btn">Otwórz Settings UI →</a>
-        </div>
+        </li>
+      </ul>
+    </div>
 
-        <div class="adv-card adv-card--wide">
-          <div class="adv-card-icon adv-icon--watch">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
-            </svg>
-          </div>
-          <strong data-i18n="adv3_title">Najważniejsze dane podczas treningu w jednym miejscu</strong>
-          <div class="watch-data-chips">
-            <span data-i18n="wd1">HR zones</span>
-            <span data-i18n="wd2">Nr ćwiczenia / nr obwodu</span>
-            <span data-i18n="wd3">Czas przerwy / czas pracy</span>
-            <span data-i18n="wd4">Aktualne ćwiczenie / następne ćwiczenie</span>
-            <span data-i18n="wd5">Czas całego treningu</span>
-            <span data-i18n="wd6">Zegar</span>
-          </div>
-        </div>
-
-        <div class="adv-card">
-          <div class="adv-card-icon adv-icon--list">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
-              <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
-            </svg>
-          </div>
-          <strong data-i18n="adv4_title">Plan treningowy jako aktywna lista</strong>
-          <p data-i18n="adv4_desc">Ćwiczenia wyświetlane kolejno — zawsze wiesz co teraz i co dalej.</p>
-        </div>
-
-        <div class="adv-card">
-          <div class="adv-card-icon adv-icon--chart">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-            </svg>
-          </div>
-          <strong data-i18n="adv5_title">Wykres HR</strong>
-          <p data-i18n="adv5_desc">Podgląd tętna w formie wykresu po zakończeniu treningu.</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Konfiguracja -->
-    <section class="section-block">
-      <h2 class="section-title" data-i18n="config_heading">Konfiguracja</h2>
+    <!-- ═══ 2. Konfiguracja ═══ -->
+    <div class="card">
+      <h2 class="card-heading" data-i18n="config_heading">Konfiguracja</h2>
       <div class="config-list">
         <div class="config-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -178,221 +118,278 @@
           <span data-i18n="cfg6">Obsługa treningów obwodowych (circuit training)</span>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- ══════════════════════════════════════════
-         TWORZENIE PLANU
-    ══════════════════════════════════════════ -->
-    <section class="section-block">
-      <h2 class="section-title" data-i18n="create_heading">Tworzenie planu treningowego</h2>
-      <p class="section-intro" data-i18n="create_intro">Plan to zestaw ćwiczeń wykonywanych kolejno. Możesz stworzyć wiele planów (np. Push, Pull, Nogi) i zapisać je wszystkie w jednym ciągu konfiguracyjnym.</p>
+    <!-- ═══ Settings UI tile ═══ -->
+    <a href="../settings-ui/index.html" class="settings-tile">
+      <div class="settings-tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20h9"/>
+          <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>
+        </svg>
+      </div>
+      <div class="settings-tile-body">
+        <span class="settings-tile-title" data-i18n="settings_tile_title">Settings UI</span>
+        <span class="settings-tile-desc" data-i18n="settings_tile_desc">Twórz plany, konfiguruj ćwiczenia i generuj ciąg konfiguracyjny do aplikacji.</span>
+      </div>
+      <div class="settings-tile-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </div>
+    </a>
 
-      <ol class="steps-list">
-
-        <!-- 1. Nazwa planu -->
-        <li class="step-item">
-          <span class="step-num">1</span>
-          <div class="step-body">
-            <strong data-i18n="c_s1_title">Nadaj nazwę planowi</strong>
-            <p data-i18n="c_s1_desc">Wpisz nazwę w polu Plan Name (np. „Push Day", „Nogi"). Maksymalnie 30 znaków.</p>
-          </div>
-        </li>
-
-        <!-- 2. Dodaj ćwiczenia -->
-        <li class="step-item">
-          <span class="step-num">2</span>
-          <div class="step-body">
-            <strong data-i18n="c_s2_title">Dodaj ćwiczenia</strong>
-            <p data-i18n="c_s2_desc">Kliknij „+ Add Exercise" — otworzy się okno wyboru ćwiczenia z dwoma trybami:</p>
-            <div class="sub-options">
-              <div class="sub-option">
-                <span class="sub-badge" data-i18n="c_s2_lib_badge">Z biblioteki</span>
-                <span class="sub-option-desc" data-i18n="c_s2_lib_desc">Szukaj po nazwie lub filtruj po grupie mięśniowej i sprzęcie. Kliknij ćwiczenie, by wybrać je i przejść do ustawiania parametrów.</span>
-              </div>
-              <div class="sub-option">
-                <span class="sub-badge sub-badge--alt" data-i18n="c_s2_custom_badge">Własne</span>
-                <span class="sub-option-desc" data-i18n="c_s2_custom_desc">Zakładka Custom — wpisz dowolną nazwę ćwiczenia i kliknij Add.</span>
+    <!-- ═══ 3. Tworzenie planu (accordion) ═══ -->
+    <details class="accordion">
+      <summary class="accordion-bar">
+        <span class="accordion-title" data-i18n="create_heading">Tworzenie planu treningowego</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </summary>
+      <div class="accordion-body">
+        <p class="accordion-intro" data-i18n="create_intro">Plan to zestaw ćwiczeń wykonywanych kolejno. Możesz stworzyć wiele planów (np. Push, Pull, Nogi) i zapisać je wszystkie w jednym ciągu konfiguracyjnym.</p>
+        <ol class="steps-list">
+          <li class="step-item">
+            <span class="step-num">1</span>
+            <div class="step-body">
+              <strong data-i18n="c_s1_title">Nadaj nazwę planowi</strong>
+              <p data-i18n="c_s1_desc">Wpisz nazwę w polu Plan Name (np. „Push Day", „Nogi"). Maksymalnie 30 znaków.</p>
+            </div>
+          </li>
+          <li class="step-item">
+            <span class="step-num">2</span>
+            <div class="step-body">
+              <strong data-i18n="c_s2_title">Dodaj ćwiczenia</strong>
+              <p data-i18n="c_s2_desc">Kliknij „+ Add Exercise" — otworzy się okno wyboru ćwiczenia z dwoma trybami:</p>
+              <div class="sub-options">
+                <div class="sub-option">
+                  <span class="sub-badge" data-i18n="c_s2_lib_badge">Z biblioteki</span>
+                  <span class="sub-option-desc" data-i18n="c_s2_lib_desc">Szukaj po nazwie lub filtruj po grupie mięśniowej i sprzęcie. Kliknij ćwiczenie, by wybrać je i przejść do ustawiania parametrów.</span>
+                </div>
+                <div class="sub-option">
+                  <span class="sub-badge sub-badge--alt" data-i18n="c_s2_custom_badge">Własne</span>
+                  <span class="sub-option-desc" data-i18n="c_s2_custom_desc">Zakładka Custom — wpisz dowolną nazwę ćwiczenia i kliknij Add.</span>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
+          <li class="step-item">
+            <span class="step-num">3</span>
+            <div class="step-body">
+              <strong data-i18n="c_s3_title">Ustaw parametry ćwiczenia</strong>
+              <p data-i18n="c_s3_simple">Ustaw liczbę serii, liczbę powtórzeń (lub MAX — ćwiczysz do upadku bez odliczania), czas przerwy między seriami oraz czas pracy (0 = bez limitu czasu). Każde ćwiczenie w planie konfigurujesz niezależnie.</p>
+              <p class="step-hint" data-i18n="c_s3_confirm">Gdy parametry są gotowe, kliknij „Add to Plan".</p>
+            </div>
+          </li>
+          <li class="step-item">
+            <span class="step-num">4</span>
+            <div class="step-body">
+              <strong data-i18n="c_s4_title">Edytuj i zmieniaj kolejność</strong>
+              <p data-i18n="c_s4_desc">Kliknij dowolne ćwiczenie na liście — otworzy się okno edycji. Możesz zmienić parametry, przesunąć ćwiczenie w górę lub w dół, albo je usunąć.</p>
+            </div>
+          </li>
+          <li class="step-item">
+            <span class="step-num">5</span>
+            <div class="step-body">
+              <strong data-i18n="c_s5_title">Loop training (opcjonalnie)</strong>
+              <p data-i18n="c_s5_desc">Zaznacz „Loop training" i podaj liczbę powtórzeń (2–20), jeśli zegarek ma automatycznie powtórzyć cały plan kilka razy z rzędu.</p>
+            </div>
+          </li>
+          <li class="step-item">
+            <span class="step-num">6</span>
+            <div class="step-body">
+              <strong data-i18n="c_s6_title">Dodaj plan do listy</strong>
+              <p data-i18n="c_s6_desc">Kliknij „Add Plan to List" — plan trafia do Listy Planów, a edytor czysty czeka na kolejny trening. Powtórz kroki 1–6 dla każdego planu.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </details>
 
-        <!-- 3. Parametry -->
-        <li class="step-item">
-          <span class="step-num">3</span>
-          <div class="step-body">
-            <strong data-i18n="c_s3_title">Ustaw parametry ćwiczenia</strong>
-            <p data-i18n="c_s3_simple">Ustaw liczbę serii, liczbę powtórzeń (lub MAX — ćwiczysz do upadku bez odliczania), czas przerwy między seriami oraz czas pracy (0 = bez limitu czasu). Każde ćwiczenie w planie konfigurujesz niezależnie.</p>
-            <p class="step-hint" data-i18n="c_s3_confirm">Gdy parametry są gotowe, kliknij „Add to Plan".</p>
+    <!-- ═══ 4. Lista planów (accordion) ═══ -->
+    <details class="accordion">
+      <summary class="accordion-bar">
+        <span class="accordion-title" data-i18n="list_heading">Lista planów</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </summary>
+      <div class="accordion-body">
+        <p class="accordion-intro" data-i18n="list_intro">Wszystkie gotowe treningi zbierają się na Liście Planów. Co możesz tam zrobić:</p>
+        <div class="feature-list">
+          <div class="feature-item">
+            <div class="feature-icon feature-icon--edit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <strong data-i18n="list_f1_title">Edytuj plan</strong>
+              <span data-i18n="list_f1_desc">Kliknij nazwę planu → wczyta się z powrotem do edytora. Wprowadź zmiany i kliknij „Add Plan to List" ponownie.</span>
+            </div>
           </div>
-        </li>
-
-        <!-- 4. Edycja i kolejność -->
-        <li class="step-item">
-          <span class="step-num">4</span>
-          <div class="step-body">
-            <strong data-i18n="c_s4_title">Edytuj i zmieniaj kolejność</strong>
-            <p data-i18n="c_s4_desc">Kliknij dowolne ćwiczenie na liście — otworzy się okno edycji. Możesz zmienić parametry, przesunąć ćwiczenie w górę lub w dół, albo je usunąć.</p>
+          <div class="feature-item">
+            <div class="feature-icon feature-icon--delete">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+                <path d="M10 11v6"/><path d="M14 11v6"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <strong data-i18n="list_f2_title">Usuń plan</strong>
+              <span data-i18n="list_f2_desc">Kliknij ✕ przy planie, by usunąć go z listy.</span>
+            </div>
           </div>
-        </li>
-
-        <!-- 5. Loop training -->
-        <li class="step-item">
-          <span class="step-num">5</span>
-          <div class="step-body">
-            <strong data-i18n="c_s5_title">Loop training (opcjonalnie)</strong>
-            <p data-i18n="c_s5_desc">Zaznacz „Loop training" i podaj liczbę powtórzeń (2–20), jeśli zegarek ma automatycznie powtórzyć cały plan kilka razy z rzędu.</p>
+          <div class="feature-item">
+            <div class="feature-icon feature-icon--generate">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <strong data-i18n="list_f3_title">Generuj ciąg konfiguracyjny</strong>
+              <span data-i18n="list_f3_desc">Kliknij „Generate Config String" — wszystkie plany z listy zostaną spakowane w jeden ciąg gotowy do wklejenia w Garmin Connect Mobile.</span>
+            </div>
           </div>
-        </li>
-
-        <!-- 6. Dodaj do listy -->
-        <li class="step-item">
-          <span class="step-num">6</span>
-          <div class="step-body">
-            <strong data-i18n="c_s6_title">Dodaj plan do listy</strong>
-            <p data-i18n="c_s6_desc">Kliknij „Add Plan to List" — plan trafia do Listy Planów, a edytor czysty czeka na kolejny trening. Powtórz kroki 1–6 dla każdego planu.</p>
-          </div>
-        </li>
-
-      </ol>
-    </section>
-
-    <!-- ══════════════════════════════════════════
-         LISTA PLANÓW
-    ══════════════════════════════════════════ -->
-    <section class="section-block">
-      <h2 class="section-title" data-i18n="list_heading">Lista planów</h2>
-      <p class="section-intro" data-i18n="list_intro">Wszystkie gotowe treningi zbierają się na Liście Planów. Co możesz tam zrobić:</p>
-      <div class="feature-list">
-        <div class="feature-item">
-          <div class="feature-icon feature-icon--edit">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-            </svg>
-          </div>
-          <div class="feature-text">
-            <strong data-i18n="list_f1_title">Edytuj plan</strong>
-            <span data-i18n="list_f1_desc">Kliknij nazwę planu → wczyta się z powrotem do edytora. Wprowadź zmiany i kliknij „Add Plan to List" ponownie.</span>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon feature-icon--delete">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
-              <path d="M10 11v6"/><path d="M14 11v6"/>
-            </svg>
-          </div>
-          <div class="feature-text">
-            <strong data-i18n="list_f2_title">Usuń plan</strong>
-            <span data-i18n="list_f2_desc">Kliknij ✕ przy planie, by usunąć go z listy.</span>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon feature-icon--generate">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
-            </svg>
-          </div>
-          <div class="feature-text">
-            <strong data-i18n="list_f3_title">Generuj ciąg konfiguracyjny</strong>
-            <span data-i18n="list_f3_desc">Kliknij „Generate Config String" — wszystkie plany z listy zostaną spakowane w jeden ciąg gotowy do wklejenia w Garmin Connect Mobile.</span>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon feature-icon--history">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="12 8 12 12 14 14"/><path d="M3.05 11a9 9 0 1 1 .5 4M3 16v-5h5"/>
-            </svg>
-          </div>
-          <div class="feature-text">
-            <strong data-i18n="list_f4_title">Historia generowań</strong>
-            <span data-i18n="list_f4_desc">Ostatnie 10 wygenerowanych ciągów jest zapisywane automatycznie. Możesz je skopiować lub wczytać w dowolnym momencie.</span>
+          <div class="feature-item">
+            <div class="feature-icon feature-icon--history">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="12 8 12 12 14 14"/><path d="M3.05 11a9 9 0 1 1 .5 4M3 16v-5h5"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <strong data-i18n="list_f4_title">Historia generowań</strong>
+              <span data-i18n="list_f4_desc">Ostatnie 10 wygenerowanych ciągów jest zapisywane automatycznie. Możesz je skopiować lub wczytać w dowolnym momencie.</span>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </details>
 
-    <!-- ══════════════════════════════════════════
-         WCZYTYWANIE Z CIĄGU
-    ══════════════════════════════════════════ -->
+    <!-- ═══ 5. Wczytywanie z wyrażenia (accordion) ═══ -->
+    <details class="accordion">
+      <summary class="accordion-bar">
+        <span class="accordion-title" data-i18n="import_heading">Wczytywanie wcześniej przygotowanego planu z wyrażenia tekstowego</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </summary>
+      <div class="accordion-body">
+        <p class="accordion-intro" data-i18n="import_intro">Masz gotowy ciąg konfiguracyjny z poprzedniej sesji lub od innej osoby? Załadujesz go bez ręcznego wpisywania ćwiczeń.</p>
+        <ol class="steps-list">
+          <li class="step-item">
+            <span class="step-num">1</span>
+            <div class="step-body">
+              <strong data-i18n="imp_s1_title">Wklej ciąg w pole na górze</strong>
+              <p data-i18n="imp_s1_desc">W sekcji „Load plan from string" wklej skopiowany ciąg konfiguracyjny (wygląda jak: <code>Push Day|Bench Press,4,8,90,0|…</code>).</p>
+            </div>
+          </li>
+          <li class="step-item">
+            <span class="step-num">2</span>
+            <div class="step-body">
+              <strong data-i18n="imp_s2_title">Kliknij „Load &amp; Edit"</strong>
+              <p data-i18n="imp_s2_desc">Plan wczytuje się do edytora — zobaczysz nazwę, listę ćwiczeń i parametry. Możesz swobodnie edytować wszystko przed zapisem.</p>
+            </div>
+          </li>
+          <li class="step-item">
+            <span class="step-num">3</span>
+            <div class="step-body">
+              <strong data-i18n="imp_s3_title">Dodaj do listy i generuj</strong>
+              <p data-i18n="imp_s3_desc">Po ewentualnych zmianach kliknij „Add Plan to List", a następnie „Generate Config String", by uzyskać gotowy ciąg do wklejenia w zegarek.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </details>
+
+    <!-- ═══ 6. Wgrywanie na zegarek (accordion) ═══ -->
+    <details class="accordion">
+      <summary class="accordion-bar">
+        <span class="accordion-title" data-i18n="watch_heading">Wgrywanie planów na zegarek</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </summary>
+      <div class="accordion-body">
+        <ol class="steps-list">
+          <li class="step-item">
+            <span class="step-num">1</span>
+            <div class="step-body">
+              <strong data-i18n="w_s1_title">Skopiuj ciąg konfiguracyjny</strong>
+              <p data-i18n="w_s1_desc">Po kliknięciu „Generate Config String" pojawi się ciąg tekstowy. Kliknij „Copy to clipboard".</p>
+            </div>
+          </li>
+          <li class="step-item">
+            <span class="step-num">2</span>
+            <div class="step-body">
+              <strong data-i18n="w_s2_title">Wklej w Garmin Connect Mobile</strong>
+              <p data-i18n="w_s2_desc">W aplikacji Garmin Connect Mobile przejdź do: Moje Urządzenie → Aplikacje → GymWorkoutTimer → Ustawienia. Wklej tekst w pole „Plan Configuration" i zapisz.</p>
+            </div>
+          </li>
+          <li class="step-item">
+            <span class="step-num">3</span>
+            <div class="step-body">
+              <strong data-i18n="w_s3_title">Zsynchronizuj zegarek i trenuj</strong>
+              <p data-i18n="w_s3_desc">Zsynchronizuj zegarek z Garmin Connect. Plany pojawią się na ekranie SELECT PLAN — wybierz trening, naciśnij Start i daj się poprowadzić.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </details>
+
+    <!-- ═══ 7. Wsparcie ═══ -->
     <section class="section-block">
-      <h2 class="section-title" data-i18n="import_heading">Wczytywanie planu z ciągu</h2>
-      <p class="section-intro" data-i18n="import_intro">Masz gotowy ciąg konfiguracyjny z poprzedniej sesji lub od innej osoby? Załadujesz go bez ręcznego wpisywania ćwiczeń.</p>
+      <h2 class="section-title" data-i18n="support_heading">Wsparcie</h2>
+      <div class="support-grid">
 
-      <ol class="steps-list">
-        <li class="step-item">
-          <span class="step-num">1</span>
-          <div class="step-body">
-            <strong data-i18n="imp_s1_title">Wklej ciąg w pole na górze</strong>
-            <p data-i18n="imp_s1_desc">W sekcji „Load plan from string" wklej skopiowany ciąg konfiguracyjny (wygląda jak: <code>Push Day|Bench Press,4,8,90,0|…</code>).</p>
+        <!-- Suppi / Patronite -->
+        <a href="https://suppi.pl/monkiappps" target="_blank" rel="noopener noreferrer" class="service-card service-card--suppi">
+          <div class="service-card-header">
+            <img src="../resources/suppi.png" alt="Suppi" class="service-logo">
+            <div>
+              <span class="service-card-name">Suppi</span>
+              <span class="service-card-by">by Patronite</span>
+            </div>
           </div>
-        </li>
-        <li class="step-item">
-          <span class="step-num">2</span>
-          <div class="step-body">
-            <strong data-i18n="imp_s2_title">Kliknij „Load &amp; Edit"</strong>
-            <p data-i18n="imp_s2_desc">Plan wczytuje się do edytora — zobaczysz nazwę, listę ćwiczeń i parametry. Możesz swobodnie edytować wszystko przed zapisem.</p>
+          <div class="service-card-payments">
+            <span class="pay-icon" title="Google Pay"><img src="../resources/Gpay.png" alt="Google Pay"></span>
+            <span class="pay-icon" title="Apple Pay"><img src="../resources/Apple_pay.jpg" alt="Apple Pay"></span>
+            <span class="pay-icon" title="Visa Mobile"><img src="../resources/visa_mobile.jpg" alt="Visa Mobile"></span>
+            <span class="pay-icon" title="BLIK"><img src="../resources/blik.png" alt="BLIK"></span>
+            <span class="pay-icon" title="Visa"><img src="../resources/visa.jpg" alt="Visa"></span>
+            <span class="pay-icon" title="Mastercard"><img src="../resources/mastercard.png" alt="Mastercard"></span>
+            <span class="pay-icon" title="Przelewy online"><img src="../resources/przelewy_online.png" alt="Przelewy online"></span>
           </div>
-        </li>
-        <li class="step-item">
-          <span class="step-num">3</span>
-          <div class="step-body">
-            <strong data-i18n="imp_s3_title">Dodaj do listy i generuj</strong>
-            <p data-i18n="imp_s3_desc">Po ewentualnych zmianach kliknij „Add Plan to List", a następnie „Generate Config String", by uzyskać gotowy ciąg do wklejenia w zegarek.</p>
+          <div class="service-card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
           </div>
-        </li>
-      </ol>
-    </section>
+        </a>
 
-    <!-- ══════════════════════════════════════════
-         WGRYWANIE NA ZEGAREK
-    ══════════════════════════════════════════ -->
-    <section class="section-block">
-      <h2 class="section-title" data-i18n="watch_heading">Wgrywanie planów na zegarek</h2>
+        <!-- Ko-fi -->
+        <a href="https://ko-fi.com/monkiappps" target="_blank" rel="noopener noreferrer" class="service-card service-card--kofi">
+          <div class="service-card-header">
+            <img src="../resources/kofi.png" alt="Ko-fi" class="service-logo">
+            <div>
+              <span class="service-card-name">Ko-fi</span>
+              <span class="service-card-by">Buy me a coffee</span>
+            </div>
+          </div>
+          <div class="service-card-payments">
+            <span class="pay-icon" title="PayPal"><img src="../resources/pay_pal.png" alt="PayPal"></span>
+            <span class="pay-icon" title="Visa"><img src="../resources/visa.jpg" alt="Visa"></span>
+            <span class="pay-icon" title="Mastercard"><img src="../resources/mastercard.png" alt="Mastercard"></span>
+          </div>
+          <div class="service-card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+        </a>
 
-      <ol class="steps-list">
-        <li class="step-item">
-          <span class="step-num">1</span>
-          <div class="step-body">
-            <strong data-i18n="w_s1_title">Skopiuj ciąg konfiguracyjny</strong>
-            <p data-i18n="w_s1_desc">Po kliknięciu „Generate Config String" pojawi się ciąg tekstowy. Kliknij „Copy to clipboard".</p>
-          </div>
-        </li>
-        <li class="step-item">
-          <span class="step-num">2</span>
-          <div class="step-body">
-            <strong data-i18n="w_s2_title">Wklej w Garmin Connect Mobile</strong>
-            <p data-i18n="w_s2_desc">W aplikacji Garmin Connect Mobile przejdź do: Moje Urządzenie → Aplikacje → GymWorkoutTimer → Ustawienia. Wklej tekst w pole „Plan Configuration" i zapisz.</p>
-          </div>
-        </li>
-        <li class="step-item">
-          <span class="step-num">3</span>
-          <div class="step-body">
-            <strong data-i18n="w_s3_title">Zsynchronizuj zegarek i trenuj</strong>
-            <p data-i18n="w_s3_desc">Zsynchronizuj zegarek z Garmin Connect. Plany pojawią się na ekranie SELECT PLAN — wybierz trening, naciśnij Start i daj się poprowadzić.</p>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <!-- Requirements -->
-    <section class="section-block">
-      <h2 class="section-title" data-i18n="req_heading">Wymagania</h2>
-      <div class="info-card req-list">
-        <div class="req-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-          </svg>
-          <span data-i18n="req1">Zegarek Garmin z obsługą Connect IQ</span>
-        </div>
-        <div class="req-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
-          <span data-i18n="req3">Przeglądarka internetowa (do Settings UI)</span>
-        </div>
       </div>
     </section>
 
