@@ -6,11 +6,9 @@ const i18n = {
     settings_tile_desc:   'Twórz plany, konfiguruj ćwiczenia i generuj ciąg konfiguracyjny do aplikacji.',
 
     // ── Wsparcie ──
-    support_heading:      'Wsparcie aplikacji',
-    support_tile_title:   'Pomoc techniczna',
-    support_tile_desc:    'Masz problem? Napisz e-mail z opisem oraz ID urządzenia (Ustawienia → System → O systemie)',
-    support_suppi_desc:   'Wspomóż rozwój poprzez subskrypcję',
-    support_kofi_desc:    'Jednorazowe wsparcie dla rozwoju projektu',
+    support_heading:      'Wsparcie',
+    support_tile_title:   'Wesprzyj aplikację',
+    support_tile_desc:    'Wybierz sposób wsparcia — Suppi/Patronite lub Ko-fi.',
 
     // ── Zalety ──
     zalety_heading: 'Zalety',
@@ -113,11 +111,9 @@ const i18n = {
     settings_tile_desc:   'Build plans, configure exercises, and generate a config string for the app.',
 
     // ── Support ──
-    support_heading:      'App Support',
-    support_tile_title:   'Technical Help',
-    support_tile_desc:    'Having issues? Send an email with a description and your device ID (Settings → System → About Device)',
-    support_suppi_desc:   'Support development through a subscription',
-    support_kofi_desc:    'One-time support for project development',
+    support_heading:      'Support',
+    support_tile_title:   'Support the app',
+    support_tile_desc:    'Choose a way to support — Suppi/Patronite or Ko-fi.',
 
     // ── Benefits ──
     zalety_heading: 'Benefits',
@@ -219,12 +215,10 @@ const i18n = {
     settings_tile_title:  'Settings UI',
     settings_tile_desc:   'Pläne erstellen, Übungen konfigurieren und einen Konfigurations-String generieren.',
 
-    // ── Support ──
-    support_heading:      'App-Unterstützung',
-    support_tile_title:   'Technische Hilfe',
-    support_tile_desc:    'Hast du Probleme? Sende eine E-Mail mit einer Beschreibung und deiner Geräte-ID (Einstellungen → System → Über)',
-    support_suppi_desc:   'Unterstütze die Entwicklung durch ein Abonnement',
-    support_kofi_desc:    'Einmalige Unterstützung für die Projektentwicklung',
+    // ── Unterstützung ──
+    support_heading:      'Unterstützung',
+    support_tile_title:   'App unterstützen',
+    support_tile_desc:    'Wähle eine Unterstützungsart — Suppi/Patronite oder Ko-fi.',
 
     // ── Vorteile ──
     zalety_heading: 'Vorteile',
@@ -327,11 +321,9 @@ const i18n = {
     settings_tile_desc:   'Crea planes, configura ejercicios y genera la cadena de configuración para la app.',
 
     // ── Soporte ──
-    support_heading:      'Soporte de la app',
-    support_tile_title:   'Ayuda técnica',
-    support_tile_desc:    '¿Tienes problemas? Envía un correo con una descripción e ID de dispositivo (Ajustes → Sistema → Acerca de)',
-    support_suppi_desc:   'Apoya el desarrollo con una suscripción',
-    support_kofi_desc:    'Apoyo único para el desarrollo del proyecto',
+    support_heading:      'Soporte',
+    support_tile_title:   'Apoya la app',
+    support_tile_desc:    'Elige una forma de apoyar — Suppi/Patronite o Ko-fi.',
 
     // ── Ventajas ──
     zalety_heading: 'Ventajas',

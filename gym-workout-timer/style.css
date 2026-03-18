@@ -697,117 +697,6 @@ code {
   word-break: break-all;
 }
 
-/* ─── Support services ─── */
-.support-services {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-}
-
-.service-tile {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.2rem;
-  text-decoration: none;
-  color: var(--text);
-  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-  position: relative;
-}
-
-.service-tile:hover {
-  background: var(--surface-hover);
-  border-color: #444;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  transform: translateY(-2px);
-}
-
-.service-tile--suppi:hover {
-  border-color: #ffa500;
-  box-shadow: 0 4px 16px rgba(255, 165, 0, 0.2);
-}
-
-.service-tile--kofi:hover {
-  border-color: #ff5e78;
-  box-shadow: 0 4px 16px rgba(255, 94, 120, 0.2);
-}
-
-.service-header {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  margin-bottom: 0.3rem;
-}
-
-.service-title {
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: var(--gold-light);
-  margin: 0;
-}
-
-.service-subtitle {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.service-desc {
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  line-height: 1.5;
-  margin: 0;
-  flex: 1;
-}
-
-.payment-methods {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.payment-badge {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text);
-  background: #141414;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0.35rem 0.65rem;
-  white-space: nowrap;
-}
-
-.service-arrow {
-  position: absolute;
-  top: 50%;
-  right: 1rem;
-  transform: translateY(-50%);
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  opacity: 0.6;
-  transition: opacity 0.2s, color 0.2s;
-}
-
-.service-tile:hover .service-arrow {
-  opacity: 1;
-  color: var(--gold-light);
-}
-
-.service-arrow svg {
-  width: 16px;
-  height: 16px;
-}
-
 /* ─── Responsive ─── */
 @media (max-width: 500px) {
   .app-hero {
@@ -835,10 +724,6 @@ code {
   }
 
   .adv-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .support-services {
     grid-template-columns: 1fr;
   }
 }

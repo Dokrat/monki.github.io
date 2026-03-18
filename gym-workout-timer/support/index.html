@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wsparcie – Gym Workout Timer – MonkiAppps</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="back-btn" title="Wróć">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </a>
+      <a href="../../index.html" class="logo">🐒 MonkiAppps</a>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="pl">PL</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="de">DE</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+  </header>
+
+  <main class="page-content">
+
+    <!-- Heading -->
+    <section class="support-hero">
+      <h1 class="support-page-title" data-i18n="sp_title">Wesprzyj Gym Workout Timer</h1>
+      <p class="support-page-desc" data-i18n="sp_desc">Jeśli aplikacja Ci się podoba, możesz wesprzeć jej rozwój przez jedną z poniższych platform.</p>
+    </section>
+
+    <!-- Info box -->
+    <section class="section-block">
+      <div class="info-card support-info">
+        <div class="support-info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+        </div>
+        <div class="support-info-body">
+          <p data-i18n="sp_info_1">W wiadomości wpisz adres e-mail oraz ID urządzenia.</p>
+          <p class="support-path" data-i18n="sp_info_2">Ustawienia → System → O systemie → ID urz. (10 cyfr)</p>
+          <p class="support-contact" data-i18n="sp_info_3">W razie problemów: <a href="mailto:monki.appps@gmail.com">monki.appps@gmail.com</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service tiles -->
+    <section class="section-block">
+      <h2 class="section-title" data-i18n="sp_choose">Wybierz platformę</h2>
+
+      <div class="support-grid">
+
+        <!-- Suppi / Patronite -->
+        <a href="https://suppi.pl/monkiappps" target="_blank" rel="noopener noreferrer" class="service-card service-card--suppi">
+          <div class="service-card-header">
+            <span class="service-card-name">Suppi</span>
+            <span class="service-card-by">by Patronite</span>
+          </div>
+          <p class="service-card-desc" data-i18n="sp_suppi_desc">Wspomóż rozwój aplikacji poprzez subskrypcję lub jednorazową wpłatę.</p>
+          <div class="service-card-payments">
+            <span class="pay-icon" title="Google Pay"><img src="../../resources/Gpay.png" alt="Google Pay"></span>
+            <span class="pay-icon" title="Apple Pay"><img src="../../resources/Apple_pay.jpg" alt="Apple Pay"></span>
+            <span class="pay-icon" title="Visa Mobile"><img src="../../resources/visa_mobile.jpg" alt="Visa Mobile"></span>
+            <span class="pay-icon" title="BLIK"><img src="../../resources/blik.png" alt="BLIK"></span>
+            <span class="pay-icon" title="Visa"><img src="../../resources/visa.jpg" alt="Visa"></span>
+            <span class="pay-icon" title="Mastercard"><img src="../../resources/mastercard.png" alt="Mastercard"></span>
+            <span class="pay-icon" title="Przelewy online"><img src="../../resources/przelewy_online.png" alt="Przelewy online"></span>
+          </div>
+          <div class="service-card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Ko-fi -->
+        <a href="https://ko-fi.com/monkiappps" target="_blank" rel="noopener noreferrer" class="service-card service-card--kofi">
+          <div class="service-card-header">
+            <span class="service-card-name">Ko-fi</span>
+            <span class="service-card-by">Buy me a coffee</span>
+          </div>
+          <p class="service-card-desc" data-i18n="sp_kofi_desc">Jednorazowe wsparcie dla rozwoju projektu.</p>
+          <div class="service-card-payments">
+            <span class="pay-icon" title="PayPal"><img src="../../resources/pay_pal.png" alt="PayPal"></span>
+            <span class="pay-icon" title="Visa"><img src="../../resources/visa.jpg" alt="Visa"></span>
+            <span class="pay-icon" title="Mastercard"><img src="../../resources/mastercard.png" alt="Mastercard"></span>
+          </div>
+          <div class="service-card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a href="mailto:monki.appps@gmail.com" class="footer-link" data-i18n="contact">Kontakt</a>
+      <p class="copyright" data-i18n="copyright">© 2026 MonkiAppps. Wszelkie prawa zastrzeżone.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

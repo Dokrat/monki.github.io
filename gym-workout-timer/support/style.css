@@ -1,0 +1,219 @@
+/* ─── Support page hero ─── */
+.support-hero {
+  text-align: center;
+  padding-bottom: 0.5rem;
+}
+
+.support-page-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--gold-light);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.support-page-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ─── Info box ─── */
+.support-info {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.support-info-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1f1c0e, #2e2710);
+  border: 1px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-light);
+}
+
+.support-info-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.support-info-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.support-info-body p {
+  margin: 0;
+}
+
+.support-path {
+  font-size: 0.82rem !important;
+  font-weight: 600;
+  color: var(--text) !important;
+  background: #141414;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.4rem 0.7rem;
+  display: inline-block;
+  font-family: monospace;
+}
+
+.support-contact a {
+  color: var(--gold-light);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.support-contact a:hover {
+  opacity: 0.75;
+}
+
+/* ─── Service cards grid ─── */
+.support-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.4rem 1.2rem;
+  text-decoration: none;
+  color: var(--text);
+  position: relative;
+  transition: background 0.2s, border-color 0.25s, box-shadow 0.25s, transform 0.2s;
+}
+
+.service-card:hover {
+  background: var(--surface-hover);
+  transform: translateY(-3px);
+}
+
+.service-card--suppi {
+  border-color: #3a2a00;
+}
+
+.service-card--suppi:hover {
+  border-color: #ffa500;
+  box-shadow: 0 6px 24px rgba(255, 165, 0, 0.18);
+}
+
+.service-card--kofi {
+  border-color: #3a1520;
+}
+
+.service-card--kofi:hover {
+  border-color: #ff5e5b;
+  box-shadow: 0 6px 24px rgba(255, 94, 91, 0.18);
+}
+
+/* header */
+.service-card-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.service-card-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--gold-light);
+}
+
+.service-card-by {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* description */
+.service-card-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+
+/* payment icons */
+.service-card-payments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.2rem;
+}
+
+.pay-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 30px;
+  background: #141414;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.pay-icon img {
+  max-width: 34px;
+  max-height: 22px;
+  object-fit: contain;
+  display: block;
+}
+
+.service-card:hover .pay-icon {
+  border-color: #444;
+}
+
+/* arrow */
+.service-card-arrow {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  color: var(--text-muted);
+  opacity: 0.4;
+  transition: opacity 0.2s, color 0.2s;
+}
+
+.service-card-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+.service-card:hover .service-card-arrow {
+  opacity: 1;
+  color: var(--gold-light);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 500px) {
+  .support-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .support-info {
+    flex-direction: column;
+  }
+
+  .support-page-title {
+    font-size: 1.3rem;
+  }
+}
