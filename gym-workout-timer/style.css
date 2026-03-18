@@ -562,6 +562,95 @@ body {
   border-bottom: 1px solid var(--border);
 }
 
+/* ─── Unlock info block ─── */
+.unlock-info {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.3rem 1.4rem;
+}
+
+.unlock-info-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1f1c0e, #2e2710);
+  border: 1px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-light);
+}
+
+.unlock-info-icon svg { width: 20px; height: 20px; }
+
+.unlock-info-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.unlock-info-body p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.unlock-lead {
+  color: var(--text) !important;
+  font-weight: 600;
+}
+
+.unlock-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.unlock-list li {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.unlock-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+
+.unlock-path {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.unlock-path-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.unlock-path code {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text);
+  background: #141414;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.4rem 0.7rem;
+  word-break: break-word;
+}
+
 /* ─── Support / Service cards ─── */
 .support-grid {
   display: grid;

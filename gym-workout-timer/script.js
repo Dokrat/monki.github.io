@@ -9,6 +9,14 @@ const i18n = {
     support_heading:      'Wsparcie',
     support_tile_title:   'Wesprzyj aplikację',
     support_tile_desc:    'Wybierz sposób wsparcia — Suppi/Patronite lub Ko-fi.',
+    unlock_lead:          'Jeśli aplikacja Ci się podoba i działa poprawnie na Twoim urządzeniu, możesz odblokować pełną wersję, stawiając mi kawę.',
+    unlock_send:          'Po wsparciu wyślij wiadomość via Ko-fi / Suppi lub e-mail z:',
+    unlock_email:         'swoim adresem e-mail,',
+    unlock_devid:         'ID urządzenia.',
+    unlock_where:         'ID urządzenia znajdziesz tutaj:',
+    unlock_path_val:      'Ustawienia → System → Informacje o systemie → ID urządzenia (10 cyfr)',
+    unlock_code:          'Po otrzymaniu wiadomości wyślę Ci 5-cyfrowy kod odblokowujący.',
+    unlock_enter:         'Wpisz go w aplikacji tutaj:',
 
     // ── Zalety ──
     zalety_heading: 'Zalety',
@@ -18,7 +26,7 @@ const i18n = {
     adv2_desc:  'Plany tworzysz w przeglądarce przez Settings UI — bez instalacji czegokolwiek.',
     adv2_btn:   'Otwórz Settings UI →',
     adv3_title: 'Najważniejsze dane podczas treningu w jednym miejscu',
-    wd1: 'HR zones',
+    wd1: 'Strefy tętna',
     wd2: 'Nr ćwiczenia / nr obwodu',
     wd3: 'Czas przerwy / czas pracy',
     wd4: 'Aktualne ćwiczenie / następne ćwiczenie',
@@ -34,7 +42,7 @@ const i18n = {
     cfg1: 'Tworzenie i odtwarzanie planów treningowych',
     cfg2: 'Możliwość dodawania własnych ćwiczeń',
     cfg3: 'Ponad 800 ćwiczeń do wyboru z wbudowanej biblioteki',
-    cfg4: 'Każde ćwiczenie w planie ma niezależną konfigurację — czas pracy, przerwy i liczba powtórzeń',
+    cfg4: 'Każde ćwiczenie w planie ma niezależną konfigurację — czas pracy, przerwy, ilość serii i liczbę powtórzeń',
     cfg5: 'Czas pracy z limitem sekund lub bez limitu',
     cfg6: 'Obsługa treningów obwodowych (circuit training)',
 
@@ -114,6 +122,14 @@ const i18n = {
     support_heading:      'Support',
     support_tile_title:   'Support the app',
     support_tile_desc:    'Choose a way to support — Suppi/Patronite or Ko-fi.',
+    unlock_lead:          'If you enjoy the app and it works well on your device, you can unlock the full version by buying me a coffee.',
+    unlock_send:          'After supporting, send a message via Ko-fi / Suppi or email with:',
+    unlock_email:         'your email address,',
+    unlock_devid:         'device ID.',
+    unlock_where:         'You can find the device ID here:',
+    unlock_path_val:      'Settings → System → About → Device ID (10 digits)',
+    unlock_code:          'After receiving your message, I will send you a 5-digit unlock code.',
+    unlock_enter:         'Enter it in the app here:',
 
     // ── Benefits ──
     zalety_heading: 'Benefits',
@@ -139,7 +155,7 @@ const i18n = {
     cfg1: 'Create and play back workout plans',
     cfg2: 'Add your own custom exercises',
     cfg3: 'Choose from over 800 exercises in the built-in library',
-    cfg4: 'Every exercise in a plan has its own independent settings — work time, rest, and reps',
+    cfg4: 'Every exercise in a plan has its own independent settings — work time, rest, number of sets, and reps',
     cfg5: 'Work time can be set with a second limit or unlimited',
     cfg6: 'Circuit training support',
 
@@ -219,6 +235,14 @@ const i18n = {
     support_heading:      'Unterstützung',
     support_tile_title:   'App unterstützen',
     support_tile_desc:    'Wähle eine Unterstützungsart — Suppi/Patronite oder Ko-fi.',
+    unlock_lead:          'Wenn dir die App gefällt und auf deinem Gerät gut funktioniert, kannst du die Vollversion freischalten, indem du mir einen Kaffee spendierst.',
+    unlock_send:          'Sende nach der Unterstützung eine Nachricht über Ko-fi / Suppi oder E-Mail mit:',
+    unlock_email:         'deiner E-Mail-Adresse,',
+    unlock_devid:         'Geräte-ID.',
+    unlock_where:         'Die Geräte-ID findest du hier:',
+    unlock_path_val:      'Einstellungen → System → Über → Geräte-ID (10 Ziffern)',
+    unlock_code:          'Nach Erhalt deiner Nachricht sende ich dir einen 5-stelligen Freischaltcode.',
+    unlock_enter:         'Gib ihn in der App hier ein:',
 
     // ── Vorteile ──
     zalety_heading: 'Vorteile',
@@ -244,7 +268,7 @@ const i18n = {
     cfg1: 'Trainingspläne erstellen und abspielen',
     cfg2: 'Eigene Übungen hinzufügen',
     cfg3: 'Über 800 Übungen aus der eingebauten Bibliothek wählen',
-    cfg4: 'Jede Übung im Plan hat eigene Einstellungen — Arbeitszeit, Pause und Wiederholungen',
+    cfg4: 'Jede Übung im Plan hat eigene Einstellungen — Arbeitszeit, Pause, Satzanzahl und Wiederholungen',
     cfg5: 'Arbeitszeit mit Sekundenlimit oder ohne Limit',
     cfg6: 'Zirkeltraining unterstützt',
 
@@ -324,6 +348,14 @@ const i18n = {
     support_heading:      'Soporte',
     support_tile_title:   'Apoya la app',
     support_tile_desc:    'Elige una forma de apoyar — Suppi/Patronite o Ko-fi.',
+    unlock_lead:          'Si te gusta la app y funciona correctamente en tu dispositivo, puedes desbloquear la versión completa invitándome a un café.',
+    unlock_send:          'Después de apoyar, envía un mensaje por Ko-fi / Suppi o correo con:',
+    unlock_email:         'tu dirección de correo electrónico,',
+    unlock_devid:         'ID del dispositivo.',
+    unlock_where:         'El ID del dispositivo lo encuentras aquí:',
+    unlock_path_val:      'Ajustes → Sistema → Acerca de → ID de dispositivo (10 dígitos)',
+    unlock_code:          'Después de recibir tu mensaje, te enviaré un código de desbloqueo de 5 dígitos.',
+    unlock_enter:         'Ingrésalo en la app aquí:',
 
     // ── Ventajas ──
     zalety_heading: 'Ventajas',
@@ -349,7 +381,7 @@ const i18n = {
     cfg1: 'Crear y reproducir planes de entrenamiento',
     cfg2: 'Añadir ejercicios personalizados',
     cfg3: 'Más de 800 ejercicios en la biblioteca integrada',
-    cfg4: 'Cada ejercicio tiene su propia configuración independiente — tiempo de trabajo, descanso y repeticiones',
+    cfg4: 'Cada ejercicio tiene su propia configuración independiente — tiempo de trabajo, descanso, número de series y repeticiones',
     cfg5: 'Tiempo de trabajo con límite de segundos o sin límite',
     cfg6: 'Compatible con entrenamiento en circuito',
 
