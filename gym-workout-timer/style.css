@@ -607,9 +607,9 @@ body {
 }
 
 .service-logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
   object-fit: contain;
   background: #222;
   border: 1px solid var(--border);
