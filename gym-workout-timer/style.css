@@ -243,6 +243,48 @@ body {
   white-space: nowrap;
 }
 
+/* card-note */
+.card-note {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  background: linear-gradient(135deg, #1a1f12, #141814);
+  border: 1px solid #2e3820;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  margin-top: 0.5rem;
+}
+
+.card-note svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: #7ec85a;
+  margin-top: 0.1rem;
+}
+
+.card-note-body {
+  flex: 1;
+}
+
+.card-note-body p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.card-note-link {
+  color: #7ec85a;
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.card-note-link:hover {
+  opacity: 0.75;
+}
+
 /* config list inside card */
 .config-list {
   display: flex;

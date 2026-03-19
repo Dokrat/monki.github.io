@@ -18,6 +18,10 @@ const i18n = {
     unlock_code:          'Po otrzymaniu wiadomości wyślę Ci 5-cyfrowy kod odblokowujący.',
     unlock_enter:         'Wpisz go w aplikacji Gym Workout Timer tutaj:',
 
+    // ── Notatka o wersji próbnej ──
+    card_trial:      'Aplikacja ma dostęp do wszystkich funkcji, ale w wersji próbnej działa z ograniczeniem do 15-minutowego treningu. Jeśli się Ci spodoba, możesz odblokować pełną wersję — zobacz jak wspomóc projekt.',
+    card_trial_link: 'zobacz jak wspomóc projekt',
+
     // ── Zalety ──
     zalety_heading: 'Zalety',
     adv1_title: 'Żadnych dodatkowych aplikacji',
@@ -133,6 +137,10 @@ const i18n = {
     unlock_path_val:      'Gym Workout Timer → Settings → Unlock App → Your Device ID: (10 digits)',
     unlock_code:          'After receiving your message, I will send you a 5-digit unlock code.',
     unlock_enter:         'Enter it in the Gym Workout Timer app here:',
+
+    // ── Trial version note ──
+    card_trial:      'The app has access to all features, but in the trial version it works with a limit to 15-minute workouts. If you like it, you can unlock the full version — see how to support the project.',
+    card_trial_link: 'see how to support the project',
 
     // ── Benefits ──
     zalety_heading: 'Benefits',
@@ -250,6 +258,10 @@ const i18n = {
     unlock_code:          'Nach Erhalt deiner Nachricht sende ich dir einen 5-stelligen Freischaltcode.',
     unlock_enter:         'Gib ihn in der Gym Workout Timer App hier ein:',
 
+    // ── Testversions-Hinweis ──
+    card_trial:      'Die App hat Zugriff auf alle Funktionen, aber in der Testversion funktioniert sie mit einer Beschränkung auf 15-minütige Trainings. Wenn sie dir gefällt, kannst du die Vollversion freischalten — siehe, wie du das Projekt unterstützen kannst.',
+    card_trial_link: 'siehe, wie du das Projekt unterstützen kannst',
+
     // ── Vorteile ──
     zalety_heading: 'Vorteile',
     adv1_title: 'Keine zusätzlichen Apps nötig',
@@ -365,6 +377,10 @@ const i18n = {
     unlock_path_val:      'Gym Workout Timer → Settings → Unlock App → Your Device ID: (10 dígitos)',
     unlock_code:          'Después de recibir tu mensaje, te enviaré un código de desbloqueo de 5 dígitos.',
     unlock_enter:         'Ingrésalo en la app Gym Workout Timer aquí:',
+
+    // ── Nota de versión de prueba ──
+    card_trial:      'La app tiene acceso a todas las características, pero en la versión de prueba funciona con un límite de entrenamientos de 15 minutos. Si te gusta, puedes desbloquear la versión completa — ve cómo apoyar el proyecto.',
+    card_trial_link: 've cómo apoyar el proyecto',
 
     // ── Ventajas ──
     zalety_heading: 'Ventajas',
