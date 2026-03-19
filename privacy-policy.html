@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - GymWorkoutTimer</title>
+  <link rel="stylesheet" href="gym-workout-timer/style.css">
+  <style>
+    .legal-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      line-height: 1.7;
+    }
+    .legal-content h2 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--gold);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .legal-content h3 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .legal-content p, .legal-content li {
+      color: var(--text);
+      margin-bottom: 0.8rem;
+    }
+    .legal-content ul {
+      margin-left: 2rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="gym-workout-timer/index.html" class="back-btn" title="Back to GymWorkoutTimer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </a>
+      <h1>GymWorkoutTimer</h1>
+      <p class="subtitle">Privacy Policy</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="legal-content">
+      <h2 data-i18n="pp_heading">Privacy Policy</h2>
+
+      <h3 data-i18n="pp_intro_title">Introduction</h3>
+      <p data-i18n="pp_intro">GymWorkoutTimer ("the App") is committed to protecting your privacy. This Privacy Policy explains what information we collect, how we use it, and your rights.</p>
+
+      <h3 data-i18n="pp_data_title">1. What Data Do We Collect?</h3>
+      <ul>
+        <li data-i18n="pp_data_1">Device ID (10 digits) - Only when you request an unlock code</li>
+        <li data-i18n="pp_data_2">Email address - Only to send unlock codes and respond to support</li>
+        <li data-i18n="pp_data_3">Workout data - Stored locally on your device only, never sent to our servers</li>
+        <li data-i18n="pp_data_4">Basic analytics - Only if you visit our website</li>
+      </ul>
+
+      <h3 data-i18n="pp_usage_title">2. How Do We Use Your Data?</h3>
+      <ul>
+        <li data-i18n="pp_usage_1">Device ID: To verify unlock codes and provide app access</li>
+        <li data-i18n="pp_usage_2">Email: To send unlock codes and respond to your inquiries</li>
+        <li data-i18n="pp_usage_3">Workout data: Stored only on your device - we never access it</li>
+      </ul>
+
+      <h3 data-i18n="pp_storage_title">3. Data Storage & Security</h3>
+      <p data-i18n="pp_storage">Your data is stored securely. We do not share your personal information with third parties. Device IDs and emails are stored only as long as needed to provide unlock services.</p>
+
+      <h3 data-i18n="pp_retention_title">4. Data Retention</h3>
+      <p data-i18n="pp_retention">We retain your email and Device ID only for the purpose of providing unlock access. You can request deletion at any time by contacting us.</p>
+
+      <h3 data-i18n="pp_rights_title">5. Your Rights (RODO/GDPR)</h3>
+      <p data-i18n="pp_rights_intro">Under RODO (Polish GDPR implementation), you have the right to:</p>
+      <ul>
+        <li data-i18n="pp_rights_1">Access your personal data</li>
+        <li data-i18n="pp_rights_2">Request correction of inaccurate data</li>
+        <li data-i18n="pp_rights_3">Request deletion of your data</li>
+        <li data-i18n="pp_rights_4">Withdraw consent at any time</li>
+      </ul>
+      <p data-i18n="pp_rights_contact">To exercise these rights, contact us at <strong>monki.appps@gmail.com</strong></p>
+
+      <h3 data-i18n="pp_cookies_title">6. Cookies & Tracking</h3>
+      <p data-i18n="pp_cookies">The website uses minimal tracking. We do not use cookies for advertising or tracking purposes.</p>
+
+      <h3 data-i18n="pp_changes_title">7. Changes to This Policy</h3>
+      <p data-i18n="pp_changes">We may update this Privacy Policy. Changes will be posted on this page with the updated date.</p>
+
+      <h3 data-i18n="pp_contact_title">8. Contact Us</h3>
+      <p data-i18n="pp_contact">For privacy concerns or questions, contact: <strong>monki.appps@gmail.com</strong></p>
+
+      <p style="margin-top: 3rem; font-size: 12px; color: var(--text-muted);" data-i18n="pp_updated">Last updated: March 2026</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a href="mailto:monki.appps@gmail.com" class="footer-link" data-i18n="contact">Contact</a>
+      <p class="copyright" data-i18n="copyright">© 2026 MonkiAppps. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="gym-workout-timer/script.js"></script>
+  <script>
+    // Set language from URL or localStorage
+    const lang = new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('lang') || 'en';
+    applyLang(lang);
+  </script>
+</body>
+</html>
