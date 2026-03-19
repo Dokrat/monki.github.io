@@ -19,7 +19,7 @@ const i18n = {
     unlock_enter:         'Wpisz go w aplikacji Gym Workout Timer tutaj:',
 
     // ── Notatka o wersji próbnej ──
-    card_trial:      'Aplikacja ma dostęp do wszystkich funkcji, ale w wersji próbnej działa z ograniczeniem do 15-minutowego treningu. Jeśli się Ci spodoba, możesz odblokować pełną wersję — zobacz jak wspomóc projekt.',
+    card_trial:      'Aplikacja ma dostęp do wszystkich funkcji, ale w wersji próbnej działa w trybie 15-minutowego treningu. Jeśli Ci się spodoba, możesz odblokować pełną wersję — zobacz jak wspomóc projekt.',
     card_trial_link: 'zobacz jak wspomóc projekt',
 
     // ── Zalety ──
