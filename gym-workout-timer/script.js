@@ -73,6 +73,9 @@ const i18n = {
     c_s6_title: 'Dodaj plan do listy',
     c_s6_desc:  'Kliknij „Add Plan to List" — plan trafia do Listy Planów, a edytor czysty czeka na kolejny trening. Powtórz kroki 1–6 dla każdego planu.',
 
+    c_s7_title: 'Ważna informacja o nazwach planów',
+    c_s7_desc:  'Jeśli dodasz plan o takiej samej nazwie co istniejący, zostanie on nadpisany na zegarku. Dobrą praktyką jest zapisanie sobie wygenerowanego ciągu konfiguracyjnego gdzieś w notatniku — dzięki temu będziesz mieć kopię zapasową i będziesz mógł łatwo edytować plany w przyszłości.',
+
     // ── Lista planów ──
     list_heading: 'Lista planów',
     list_intro:   'Wszystkie gotowe treningi zbierają się na Liście Planów. Co możesz tam zrobić:',
@@ -185,6 +188,9 @@ const i18n = {
 
     c_s6_title: 'Add plan to list',
     c_s6_desc:  'Click "Add Plan to List" — the plan moves to the Plan List and the editor resets for the next plan. Repeat steps 1–6 for each workout.',
+
+    c_s7_title: 'Important note about plan names',
+    c_s7_desc:  'If you add a plan with the same name as an existing one, it will overwrite the existing plan on your watch. It\'s good practice to save the generated config string somewhere in your notes — this way you\'ll have a backup and can easily edit plans in the future.',
 
     // ── Plan list ──
     list_heading: 'Plan List',
@@ -299,6 +305,9 @@ const i18n = {
     c_s6_title: 'Plan zur Liste hinzufügen',
     c_s6_desc:  '„Add Plan to List" klicken — der Plan wird zur Planliste hinzugefügt und der Editor wartet auf den nächsten Plan. Schritte 1–6 für jeden Plan wiederholen.',
 
+    c_s7_title: 'Wichtiger Hinweis zu Plannamen',
+    c_s7_desc:  'Wenn du einen Plan mit demselben Namen wie ein vorhandener hinzufügst, wird der existierende Plan auf der Uhr überschrieben. Es ist empfehlenswert, den generierten Konfigurationsstring irgendwo in deinen Notizen zu speichern — so hast du eine Sicherung und kannst Pläne in Zukunft leicht bearbeiten.',
+
     // ── Planliste ──
     list_heading: 'Planliste',
     list_intro:   'Alle fertigen Pläne sammeln sich in der Planliste. Was du dort tun kannst:',
@@ -411,6 +420,9 @@ const i18n = {
 
     c_s6_title: 'Añadir plan a la lista',
     c_s6_desc:  'Haz clic en "Add Plan to List" — el plan se guarda en la Lista de Planes y el editor se reinicia para el siguiente entrenamiento. Repite los pasos 1–6 para cada plan.',
+
+    c_s7_title: 'Nota importante sobre nombres de planes',
+    c_s7_desc:  'Si añades un plan con el mismo nombre que uno existente, sobrescribirá el plan existente en tu reloj. Es buena práctica guardar la cadena de configuración generada en algún lugar de tus notas — así tendrás una copia de seguridad y podrás editar planes fácilmente en el futuro.',
 
     // ── Lista de planes ──
     list_heading: 'Lista de planes',
