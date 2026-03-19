@@ -10,13 +10,14 @@ const i18n = {
     support_tile_title:   'Wesprzyj aplikację',
     support_tile_desc:    'Wybierz sposób wsparcia — Suppi/Patronite lub Ko-fi.',
     unlock_lead:          'Jeśli aplikacja Ci się podoba i działa poprawnie na Twoim urządzeniu, możesz odblokować pełną wersję, stawiając mi kawę.',
-    unlock_send:          'Po wsparciu wyślij wiadomość via Ko-fi / Suppi lub e-mail z:',
+    unlock_send:          'Po wsparciu wyślij wiadomość via Ko-fi / Suppi z:',
     unlock_email:         'swoim adresem e-mail,',
     unlock_devid:         'ID urządzenia.',
     unlock_where:         'ID urządzenia znajdziesz tutaj:',
     unlock_path_val:      'Gym Workout Timer → Settings → Unlock App → Your Device ID: (10 cyfr)',
     unlock_code:          'Po otrzymaniu wiadomości wyślę Ci 5-cyfrowy kod odblokowujący.',
     unlock_enter:         'Wpisz go w aplikacji Gym Workout Timer tutaj:',
+    unlock_contact:       'W razie problemów proszę o kontakt: <a href="mailto:monki.appps@gmail.com">monki.appps@gmail.com</a>',
 
     // ── Notatka o wersji próbnej ──
     card_trial:      'Aplikacja ma dostęp do wszystkich funkcji, ale w wersji próbnej działa w trybie 15-minutowego treningu. Jeśli Ci się spodoba, możesz odblokować pełną wersję — zobacz jak wspomóc projekt.',
@@ -130,13 +131,14 @@ const i18n = {
     support_tile_title:   'Support the app',
     support_tile_desc:    'Choose a way to support — Suppi/Patronite or Ko-fi.',
     unlock_lead:          'If you enjoy the app and it works well on your device, you can unlock the full version by buying me a coffee.',
-    unlock_send:          'After supporting, send a message via Ko-fi / Suppi or email with:',
+    unlock_send:          'After supporting, send a message via Ko-fi / Suppi with:',
     unlock_email:         'your email address,',
     unlock_devid:         'device ID.',
     unlock_where:         'You can find the device ID here:',
     unlock_path_val:      'Gym Workout Timer → Settings → Unlock App → Your Device ID: (10 digits)',
     unlock_code:          'After receiving your message, I will send you a 5-digit unlock code.',
     unlock_enter:         'Enter it in the Gym Workout Timer app here:',
+    unlock_contact:       'If you have any issues, please contact me: <a href="mailto:monki.appps@gmail.com">monki.appps@gmail.com</a>',
 
     // ── Trial version note ──
     card_trial:      'The app has access to all features, but in the trial version it works with a limit to 15-minute workouts. If you like it, you can unlock the full version — see how to support the project.',
@@ -250,13 +252,14 @@ const i18n = {
     support_tile_title:   'App unterstützen',
     support_tile_desc:    'Wähle eine Unterstützungsart — Suppi/Patronite oder Ko-fi.',
     unlock_lead:          'Wenn dir die App gefällt und auf deinem Gerät gut funktioniert, kannst du die Vollversion freischalten, indem du mir einen Kaffee spendierst.',
-    unlock_send:          'Sende nach der Unterstützung eine Nachricht über Ko-fi / Suppi oder E-Mail mit:',
+    unlock_send:          'Sende nach der Unterstützung eine Nachricht über Ko-fi / Suppi mit:',
     unlock_email:         'deiner E-Mail-Adresse,',
     unlock_devid:         'Geräte-ID.',
     unlock_where:         'Die Geräte-ID findest du hier:',
     unlock_path_val:      'Gym Workout Timer → Settings → Unlock App → Your Device ID: (10 Ziffern)',
     unlock_code:          'Nach Erhalt deiner Nachricht sende ich dir einen 5-stelligen Freischaltcode.',
     unlock_enter:         'Gib ihn in der Gym Workout Timer App hier ein:',
+    unlock_contact:       'Bei Problemen kontaktiere mich bitte: <a href="mailto:monki.appps@gmail.com">monki.appps@gmail.com</a>',
 
     // ── Testversions-Hinweis ──
     card_trial:      'Die App hat Zugriff auf alle Funktionen, aber in der Testversion funktioniert sie mit einer Beschränkung auf 15-minütige Trainings. Wenn sie dir gefällt, kannst du die Vollversion freischalten — siehe, wie du das Projekt unterstützen kannst.',
@@ -370,13 +373,14 @@ const i18n = {
     support_tile_title:   'Apoya la app',
     support_tile_desc:    'Elige una forma de apoyar — Suppi/Patronite o Ko-fi.',
     unlock_lead:          'Si te gusta la app y funciona correctamente en tu dispositivo, puedes desbloquear la versión completa invitándome a un café.',
-    unlock_send:          'Después de apoyar, envía un mensaje por Ko-fi / Suppi o correo con:',
+    unlock_send:          'Después de apoyar, envía un mensaje por Ko-fi / Suppi con:',
     unlock_email:         'tu dirección de correo electrónico,',
     unlock_devid:         'ID del dispositivo.',
     unlock_where:         'El ID del dispositivo lo encuentras aquí:',
     unlock_path_val:      'Gym Workout Timer → Settings → Unlock App → Your Device ID: (10 dígitos)',
     unlock_code:          'Después de recibir tu mensaje, te enviaré un código de desbloqueo de 5 dígitos.',
     unlock_enter:         'Ingrésalo en la app Gym Workout Timer aquí:',
+    unlock_contact:       'Si tienes algún problema, por favor contáctame: <a href="mailto:monki.appps@gmail.com">monki.appps@gmail.com</a>',
 
     // ── Nota de versión de prueba ──
     card_trial:      'La app tiene acceso a todas las características, pero en la versión de prueba funciona con un límite de entrenamientos de 15 minutos. Si te gusta, puedes desbloquear la versión completa — ve cómo apoyar el proyecto.',
