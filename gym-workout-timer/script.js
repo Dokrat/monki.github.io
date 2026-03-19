@@ -14,7 +14,7 @@ const i18n = {
     unlock_email:         'swoim adresem e-mail,',
     unlock_devid:         'ID urządzenia.',
     unlock_where:         'ID urządzenia znajdziesz tutaj:',
-    unlock_path_val:      'Ustawienia → System → Informacje o systemie → ID urządzenia (10 cyfr)',
+    unlock_path_val:      'Gym Workout Timer → Settings → Unlock App → Your Device ID: (10 cyfr)',
     unlock_code:          'Po otrzymaniu wiadomości wyślę Ci 5-cyfrowy kod odblokowujący.',
     unlock_enter:         'Wpisz go w aplikacji Gym Workout Timer tutaj:',
 
@@ -127,7 +127,7 @@ const i18n = {
     unlock_email:         'your email address,',
     unlock_devid:         'device ID.',
     unlock_where:         'You can find the device ID here:',
-    unlock_path_val:      'Settings → System → About → Device ID (10 digits)',
+    unlock_path_val:      'Gym Workout Timer → Settings → Unlock App → Your Device ID: (10 digits)',
     unlock_code:          'After receiving your message, I will send you a 5-digit unlock code.',
     unlock_enter:         'Enter it in the Gym Workout Timer app here:',
 
@@ -240,7 +240,7 @@ const i18n = {
     unlock_email:         'deiner E-Mail-Adresse,',
     unlock_devid:         'Geräte-ID.',
     unlock_where:         'Die Geräte-ID findest du hier:',
-    unlock_path_val:      'Einstellungen → System → Über → Geräte-ID (10 Ziffern)',
+    unlock_path_val:      'Gym Workout Timer → Settings → Unlock App → Your Device ID: (10 Ziffern)',
     unlock_code:          'Nach Erhalt deiner Nachricht sende ich dir einen 5-stelligen Freischaltcode.',
     unlock_enter:         'Gib ihn in der Gym Workout Timer App hier ein:',
 
@@ -353,7 +353,7 @@ const i18n = {
     unlock_email:         'tu dirección de correo electrónico,',
     unlock_devid:         'ID del dispositivo.',
     unlock_where:         'El ID del dispositivo lo encuentras aquí:',
-    unlock_path_val:      'Ajustes → Sistema → Acerca de → ID de dispositivo (10 dígitos)',
+    unlock_path_val:      'Gym Workout Timer → Settings → Unlock App → Your Device ID: (10 dígitos)',
     unlock_code:          'Después de recibir tu mensaje, te enviaré un código de desbloqueo de 5 dígitos.',
     unlock_enter:         'Ingrésalo en la app Gym Workout Timer aquí:',
 
