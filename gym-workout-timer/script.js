@@ -17,7 +17,7 @@ const i18n = {
     unlock_path_val:      'Gym Workout Timer → Settings → Unlock App → Your Device ID: (10 cyfr)',
     unlock_code:          'Po otrzymaniu wiadomości wyślę Ci 5-cyfrowy kod odblokowujący.',
     unlock_enter:         'Wpisz go w aplikacji Gym Workout Timer tutaj:',
-    unlock_contact:       'W razie problemów proszę o kontakt: <a href="mailto:monki.appps@gmail.com">monki.appps@gmail.com</a>',
+    unlock_contact:       'W razie problemów proszę o kontakt:',
 
     // ── Notatka o wersji próbnej ──
     card_trial:      'Aplikacja ma dostęp do wszystkich funkcji, ale w wersji próbnej działa w trybie 15-minutowego treningu. Jeśli Ci się spodoba, możesz odblokować pełną wersję — zobacz jak wspomóc projekt.',
@@ -138,7 +138,7 @@ const i18n = {
     unlock_path_val:      'Gym Workout Timer → Settings → Unlock App → Your Device ID: (10 digits)',
     unlock_code:          'After receiving your message, I will send you a 5-digit unlock code.',
     unlock_enter:         'Enter it in the Gym Workout Timer app here:',
-    unlock_contact:       'If you have any issues, please contact me: <a href="mailto:monki.appps@gmail.com">monki.appps@gmail.com</a>',
+    unlock_contact:       'If you have any issues, please contact me:',
 
     // ── Trial version note ──
     card_trial:      'The app has access to all features, but in the trial version it works with a limit to 15-minute workouts. If you like it, you can unlock the full version — see how to support the project.',
@@ -259,7 +259,7 @@ const i18n = {
     unlock_path_val:      'Gym Workout Timer → Settings → Unlock App → Your Device ID: (10 Ziffern)',
     unlock_code:          'Nach Erhalt deiner Nachricht sende ich dir einen 5-stelligen Freischaltcode.',
     unlock_enter:         'Gib ihn in der Gym Workout Timer App hier ein:',
-    unlock_contact:       'Bei Problemen kontaktiere mich bitte: <a href="mailto:monki.appps@gmail.com">monki.appps@gmail.com</a>',
+    unlock_contact:       'Bei Problemen kontaktiere mich bitte:',
 
     // ── Testversions-Hinweis ──
     card_trial:      'Die App hat Zugriff auf alle Funktionen, aber in der Testversion funktioniert sie mit einer Beschränkung auf 15-minütige Trainings. Wenn sie dir gefällt, kannst du die Vollversion freischalten — siehe, wie du das Projekt unterstützen kannst.',
@@ -380,7 +380,7 @@ const i18n = {
     unlock_path_val:      'Gym Workout Timer → Settings → Unlock App → Your Device ID: (10 dígitos)',
     unlock_code:          'Después de recibir tu mensaje, te enviaré un código de desbloqueo de 5 dígitos.',
     unlock_enter:         'Ingrésalo en la app Gym Workout Timer aquí:',
-    unlock_contact:       'Si tienes algún problema, por favor contáctame: <a href="mailto:monki.appps@gmail.com">monki.appps@gmail.com</a>',
+    unlock_contact:       'Si tienes algún problema, por favor contáctame:',
 
     // ── Nota de versión de prueba ──
     card_trial:      'La app tiene acceso a todas las características, pero en la versión de prueba funciona con un límite de entrenamientos de 15 minutos. Si te gusta, puedes desbloquear la versión completa — ve cómo apoyar el proyecto.',
