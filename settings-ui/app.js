@@ -198,7 +198,7 @@ function renderPlanList() {
       renderPlanList();
       $('outputSection').style.display = 'none';
     });
-    card.querySelector('.plan-card-info').addEventListener('click', () => loadPlanIntoEditor(i));
+    card.addEventListener('click', () => loadPlanIntoEditor(i));
     listEl.appendChild(card);
   });
 }
