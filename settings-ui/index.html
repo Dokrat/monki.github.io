@@ -19,15 +19,6 @@
   </header>
 
   <main>
-    <!-- Import from string -->
-    <section class="card">
-      <div class="section-header">
-        <span class="field-label">Load plan from string</span>
-      </div>
-      <textarea id="importInput" class="plan-output" rows="3" placeholder="Paste existing plan config string here…"></textarea>
-      <button class="btn-import" id="btnImport">Load &amp; Edit</button>
-    </section>
-
     <!-- Plan name -->
     <section class="card">
       <label class="field-label" for="planName">Plan Name</label>
@@ -64,6 +55,15 @@
     </div>
     <div id="planList"><div class="empty-state">No plans added yet</div></div>
     <button class="btn-generate" id="btnGenerateConfig" style="display:none">Generate Config String</button>
+  </section>
+
+  <!-- Import from string -->
+  <section class="card">
+    <div class="section-header">
+      <span class="field-label">Load plan from string</span>
+    </div>
+    <textarea id="importInput" class="plan-output" rows="3" placeholder="Paste existing plan config string here…"></textarea>
+    <button class="btn-import" id="btnImport">Load &amp; Edit</button>
   </section>
 
   <!-- Generated config output -->
