@@ -47,15 +47,6 @@
     </section>
   </main>
 
-  <!-- Saved plan list -->
-  <section class="card" id="planListSection">
-    <div class="section-header">
-      <span class="field-label">Plan List</span>
-      <span id="planCount" class="badge">0</span>
-    </div>
-    <div id="planList"><div class="empty-state">No plans added yet</div></div>
-    <button class="btn-generate" id="btnGenerateConfig" style="display:none">Generate Config String</button>
-  </section>
 
   <!-- Import from string -->
   <section class="card">
@@ -92,9 +83,23 @@
     <div id="historyList"></div>
   </section>
 
-  <footer>
-    <button class="btn-save" id="btnSave">Add Plan to List</button>
-  </footer>
+  <!-- Bottom drawer -->
+  <div class="bottom-drawer" id="bottomDrawer">
+    <div class="drawer-handle" id="drawerHandle">
+      <div class="drawer-handle-bar"></div>
+    </div>
+    <div class="drawer-content" id="drawerContent">
+      <div class="section-header">
+        <span class="field-label">Plan List</span>
+        <span id="planCount" class="badge">0</span>
+      </div>
+      <div id="planList"><div class="empty-state">No plans added yet</div></div>
+    </div>
+    <div class="drawer-actions">
+      <button class="btn-save" id="btnSave">Add Plan to List</button>
+      <button class="btn-generate" id="btnGenerateConfig" style="display:none">Generate Config String</button>
+    </div>
+  </div>
 
   <!-- Search / Add modal -->
   <div class="modal-overlay" id="modalOverlay">

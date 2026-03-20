@@ -274,7 +274,25 @@ function loadPlanIntoEditor(index) {
   _restoreLoopUI(plan.loops);
   renderExerciseList();
   showToast(`"${plan.planName}" loaded into editor`);
+  collapseDrawer();
   planNameEl.scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── Bottom drawer ──────────────────────────────────────────────────────────
+function expandDrawer()  { $('bottomDrawer').classList.add('expanded'); }
+function collapseDrawer(){ $('bottomDrawer').classList.remove('expanded'); }
+function toggleDrawer()  { $('bottomDrawer').classList.toggle('expanded'); }
+
+function bindDrawerSwipe() {
+  const handle = $('drawerHandle');
+  let startY = 0;
+  handle.addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, { passive: true });
+  handle.addEventListener('touchend', e => {
+    const delta = startY - e.changedTouches[0].clientY;
+    if (delta > 30)  expandDrawer();
+    if (delta < -30) collapseDrawer();
+  }, { passive: true });
+  handle.addEventListener('click', toggleDrawer);
 }
 
 // ── Search ────────────────────────────────────────────────────────────────
@@ -446,6 +464,7 @@ function generateConfigString() {
   GarminSDK.setSettings(savedPlans, () => {
     showToast('Config generated ✓');
   });
+  collapseDrawer();
 }
 
 // ── Tabs ──────────────────────────────────────────────────────────────────
@@ -547,6 +566,11 @@ function bindEvents() {
   document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', () => switchTab(tab.dataset.tab));
   });
+
+  // Collapse drawer when tapping exercise list
+  exerciseListEl.addEventListener('click', collapseDrawer);
+
+  bindDrawerSwipe();
 
   // Close overlay on tap/click outside modal — use pointerdown for mobile
   modalOverlay.addEventListener('pointerdown', e => {
