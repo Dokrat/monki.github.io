@@ -261,8 +261,8 @@ function importString(raw) {
   } else {
     plans.forEach(p => savedPlans.push(p));
     renderPlanList();
+    expandDrawer();
     showToast(`${plans.length} plans loaded into list ✓`);
-    $('planListSection').scrollIntoView({ behavior: 'smooth' });
   }
 }
 
