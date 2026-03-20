@@ -279,9 +279,25 @@ function loadPlanIntoEditor(index) {
 }
 
 // ── Bottom drawer ──────────────────────────────────────────────────────────
-function expandDrawer()  { $('bottomDrawer').classList.add('expanded'); }
-function collapseDrawer(){ $('bottomDrawer').classList.remove('expanded'); }
-function toggleDrawer()  { $('bottomDrawer').classList.toggle('expanded'); }
+function syncBodyPadding() {
+  document.body.style.paddingBottom = $('bottomDrawer').offsetHeight + 'px';
+}
+
+function expandDrawer() {
+  $('bottomDrawer').classList.add('expanded');
+  // wait for CSS transition to finish before measuring
+  setTimeout(syncBodyPadding, 340);
+}
+
+function collapseDrawer() {
+  $('bottomDrawer').classList.remove('expanded');
+  setTimeout(syncBodyPadding, 340);
+}
+
+function toggleDrawer() {
+  $('bottomDrawer').classList.toggle('expanded');
+  setTimeout(syncBodyPadding, 340);
+}
 
 function bindDrawerSwipe() {
   const handle = $('drawerHandle');
@@ -596,4 +612,5 @@ if (window.visualViewport) {
 }
 
 // ── Start ─────────────────────────────────────────────────────────────────
-init();
+init().then(syncBodyPadding);
+window.addEventListener('resize', syncBodyPadding);
