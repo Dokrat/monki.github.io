@@ -185,18 +185,12 @@ function renderPlanList() {
     const card = document.createElement('div');
     card.className = 'plan-card';
     const loopMeta = p.loops > 1 ? ` · ${p.loops}× loop` : '';
-    const exRows = p.exercises.map(ex => {
-      const repsDisplay = ex.reps === 0 ? 'MAX' : ex.reps;
-      const wtDisplay   = ex.workTime > 0 ? ` · ${ex.workTime}s work` : '';
-      return `<li class="plan-card-exercise">${ex.name} — ${ex.sets}×${repsDisplay}${wtDisplay} · ${ex.rest}s rest</li>`;
-    }).join('');
     card.innerHTML = `
       <div class="plan-card-info">
         <div class="plan-card-name">${p.planName}</div>
         <div class="plan-card-meta">${p.exercises.length} exercise${p.exercises.length !== 1 ? 's' : ''}${loopMeta}</div>
       </div>
       <button class="btn-remove-plan" data-index="${i}" title="Remove plan">✕</button>
-      <ul class="plan-card-exercises hidden">${exRows}</ul>
     `;
     card.querySelector('.btn-remove-plan').addEventListener('click', e => {
       e.stopPropagation();
@@ -204,10 +198,7 @@ function renderPlanList() {
       renderPlanList();
       $('outputSection').style.display = 'none';
     });
-    card.querySelector('.plan-card-info').addEventListener('click', () => {
-      const exList = card.querySelector('.plan-card-exercises');
-      exList.classList.toggle('hidden');
-    });
+    card.querySelector('.plan-card-info').addEventListener('click', () => loadPlanIntoEditor(i));
     listEl.appendChild(card);
   });
 }
