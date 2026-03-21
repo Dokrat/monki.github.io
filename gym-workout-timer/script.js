@@ -114,9 +114,11 @@ const i18n = {
     req_heading: 'Wymagania',
     req1: 'Zegarek Garmin z obsługą Connect IQ',
     req3: 'Przeglądarka internetowa (do Settings UI)',
-    cta_btn:   'Otwórz Settings UI',
-    contact:   'Kontakt',
-    copyright: '© 2026 MonkiAppps. Wszelkie prawa zastrzeżone.',
+    cta_btn:       'Otwórz Settings UI',
+    contact:       'Kontakt',
+    footer_privacy: 'Polityka Prywatności',
+    footer_terms:   'Regulamin',
+    copyright:     '© 2026 MonkiAppps. Wszelkie prawa zastrzeżone.',
 
     // ── Privacy Policy ──
     pp_heading:        'Polityka Prywatności',
@@ -311,9 +313,11 @@ const i18n = {
     req_heading: 'Requirements',
     req1: 'Garmin watch with Connect IQ support',
     req3: 'A web browser (for the Settings UI)',
-    cta_btn:   'Open Settings UI',
-    contact:   'Contact',
-    copyright: '© 2026 MonkiAppps. All rights reserved.',
+    cta_btn:       'Open Settings UI',
+    contact:       'Contact',
+    footer_privacy: 'Privacy Policy',
+    footer_terms:   'Terms of Service',
+    copyright:     '© 2026 MonkiAppps. All rights reserved.',
 
     // ── Privacy Policy ──
     pp_heading:        'Privacy Policy',
@@ -508,9 +512,11 @@ const i18n = {
     req_heading: 'Voraussetzungen',
     req1: 'Garmin-Uhr mit Connect IQ Unterstützung',
     req3: 'Webbrowser (für das Settings UI)',
-    cta_btn:   'Settings UI öffnen',
-    contact:   'Kontakt',
-    copyright: '© 2026 MonkiAppps. Alle Rechte vorbehalten.',
+    cta_btn:       'Settings UI öffnen',
+    contact:       'Kontakt',
+    footer_privacy: 'Datenschutzrichtlinie',
+    footer_terms:   'Nutzungsbedingungen',
+    copyright:     '© 2026 MonkiAppps. Alle Rechte vorbehalten.',
 
     // ── Datenschutz ──
     pp_heading:        'Datenschutzrichtlinie',
@@ -705,9 +711,11 @@ const i18n = {
     req_heading: 'Requisitos',
     req1: 'Reloj Garmin con soporte Connect IQ',
     req3: 'Navegador web (para el Settings UI)',
-    cta_btn:   'Abrir Settings UI',
-    contact:   'Contacto',
-    copyright: '© 2026 MonkiAppps. Todos los derechos reservados.',
+    cta_btn:       'Abrir Settings UI',
+    contact:       'Contacto',
+    footer_privacy: 'Política de Privacidad',
+    footer_terms:   'Términos de Servicio',
+    copyright:     '© 2026 MonkiAppps. Todos los derechos reservados.',
 
     // ── Política de Privacidad ──
     pp_heading:        'Política de Privacidad',
