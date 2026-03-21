@@ -773,17 +773,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 28px;
+  width: 56px;
+  height: 56px;
   background: #141414;
   border: 1px solid var(--border);
-  border-radius: 5px;
+  border-radius: 8px;
   overflow: hidden;
 }
 
 .pay-icon img {
-  max-width: 32px;
-  max-height: 20px;
+  max-width: 44px;
+  max-height: 44px;
   object-fit: contain;
   display: block;
 }
