@@ -141,9 +141,9 @@
             <label class="field-label">Reps</label>
             <input type="number" id="paramReps" class="num-input" value="10" min="0" max="100">
           </div>
-          <div class="param-field">
-            <label class="field-label">Rest (s)</label>
-            <input type="number" id="paramRest" class="num-input" value="60" min="0" max="600" step="5">
+          <div class="param-field checkbox-field">
+            <label class="field-label">MAX reps</label>
+            <input type="checkbox" id="paramRepsMax" class="checkbox-input">
           </div>
         </div>
         <div class="params-grid params-grid-2">
@@ -152,11 +152,21 @@
             <input type="number" id="paramWorkTime" class="num-input" value="0" min="0" max="600" step="5">
           </div>
           <div class="param-field checkbox-field">
-            <label class="field-label">MAX reps</label>
-            <input type="checkbox" id="paramRepsMax" class="checkbox-input">
+            <label class="field-label">Unlimited work time</label>
+            <input type="checkbox" id="paramWorkUnlimited" class="checkbox-input">
           </div>
         </div>
-        <p class="params-hint">Work time 0 = no limit &nbsp;·&nbsp; MAX reps = until failure</p>
+        <div class="params-grid params-grid-2">
+          <div class="param-field">
+            <label class="field-label">Rest time (s)</label>
+            <input type="number" id="paramRest" class="num-input" value="60" min="0" max="600" step="5">
+          </div>
+          <div class="param-field checkbox-field">
+            <label class="field-label">Unlimited rest time</label>
+            <input type="checkbox" id="paramRestUnlimited" class="checkbox-input">
+          </div>
+        </div>
+        <p class="params-hint">Work/Rest time 0 = no limit (end with lap) &nbsp;·&nbsp; MAX reps = until failure</p>
         <button class="btn-primary" id="btnConfirmAdd">Add to Plan</button>
       </div>
     </div>
@@ -179,9 +189,9 @@
           <label class="field-label">Reps</label>
           <input type="number" id="editReps" class="num-input" min="0" max="100">
         </div>
-        <div class="param-field">
-          <label class="field-label">Rest (s)</label>
-          <input type="number" id="editRest" class="num-input" min="0" max="600" step="5">
+        <div class="param-field checkbox-field">
+          <label class="field-label">MAX reps</label>
+          <input type="checkbox" id="editRepsMax" class="checkbox-input">
         </div>
       </div>
       <div class="params-grid params-grid-2">
@@ -190,11 +200,21 @@
           <input type="number" id="editWorkTime" class="num-input" min="0" max="600" step="5">
         </div>
         <div class="param-field checkbox-field">
-          <label class="field-label">MAX reps</label>
-          <input type="checkbox" id="editRepsMax" class="checkbox-input">
+          <label class="field-label">Unlimited work time</label>
+          <input type="checkbox" id="editWorkUnlimited" class="checkbox-input">
         </div>
       </div>
-      <p class="params-hint">Work time 0 = no limit &nbsp;·&nbsp; MAX reps = until failure</p>
+      <div class="params-grid params-grid-2">
+        <div class="param-field">
+          <label class="field-label">Rest time (s)</label>
+          <input type="number" id="editRest" class="num-input" min="0" max="600" step="5">
+        </div>
+        <div class="param-field checkbox-field">
+          <label class="field-label">Unlimited rest time</label>
+          <input type="checkbox" id="editRestUnlimited" class="checkbox-input">
+        </div>
+      </div>
+      <p class="params-hint">Work/Rest time 0 = no limit (end with lap) &nbsp;·&nbsp; MAX reps = until failure</p>
       <div class="edit-reorder">
         <button class="btn-reorder" id="btnMoveUp">▲ Move up</button>
         <button class="btn-reorder" id="btnMoveDown">▼ Move down</button>

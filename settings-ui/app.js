@@ -5,7 +5,7 @@ const HISTORY_KEY = 'gymtimerConfigHistory';
 
 // ── Serialization ──────────────────────────────────────────────────────────
 // Format: "PlanName|LOOPS:N|ExName,sets,reps,rest,workTime|..."
-// LOOPS token is optional (omitted when loops=1); reps=0 → MAX; workTime=0 → no limit
+// LOOPS token is optional (omitted when loops=1); reps=0 → MAX; workTime=0 → no limit; rest=0 → no limit (end with lap)
 function serializePlan(p) {
   const parts = [p.planName || 'My Plan'];
   if (p.loops && p.loops > 1) parts.push(`LOOPS:${p.loops}`);
@@ -32,7 +32,7 @@ function deserializePlan(raw) {
         name:     f[0],
         sets:     parseInt(f[1]) || 3,
         reps:     parseInt(f[2]),        // 0 = MAX — keep as-is
-        rest:     parseInt(f[3]) || 60,
+        rest:     parseInt(f[3]),        // 0 = no limit — keep as-is
         workTime: f.length >= 5 ? (parseInt(f[4]) || 0) : 0,
       });
     }
@@ -151,6 +151,7 @@ function renderExerciseList() {
   plan.exercises.forEach((ex, i) => {
     const repsDisplay = ex.reps === 0 ? 'MAX' : ex.reps;
     const wtDisplay   = ex.workTime > 0 ? ` · ${ex.workTime}s work` : '';
+    const restDisplay = ex.rest > 0 ? `${ex.rest}s rest` : '∞ rest';
     const li = document.createElement('li');
     li.className = 'exercise-item';
     li.dataset.index = i;
@@ -158,7 +159,7 @@ function renderExerciseList() {
       <div class="exercise-index">${i + 1}</div>
       <div class="exercise-info">
         <div class="exercise-name">${ex.name}</div>
-        <div class="exercise-params">${ex.sets} sets · ${repsDisplay} reps${wtDisplay} · ${ex.rest}s rest</div>
+        <div class="exercise-params">${ex.sets} sets · ${repsDisplay} reps${wtDisplay} · ${restDisplay}</div>
       </div>
       <div class="exercise-drag">☰</div>
     `;
@@ -359,8 +360,14 @@ function openAddModal() {
   searchInput.value = '';
   $('customName').value = '';
   $('paramRepsMax').checked = false;
+  $('paramReps').disabled = false;
   $('paramReps').value = 10;
+  $('paramRest').value = 60;
+  $('paramRest').disabled = false;
+  $('paramRestUnlimited').checked = false;
   $('paramWorkTime').value = 0;
+  $('paramWorkTime').disabled = true;
+  $('paramWorkUnlimited').checked = true;
   switchTab('list');
   runSearch();
   modalOverlay.classList.add('open');
@@ -376,8 +383,8 @@ function confirmAdd() {
     name:     pendingExercise,
     sets:     parseInt($('paramSets').value) || 3,
     reps:     isMax ? 0 : (parseInt($('paramReps').value) || 10),
-    rest:     parseInt($('paramRest').value) || 60,
-    workTime: parseInt($('paramWorkTime').value) || 0,
+    rest:     $('paramRestUnlimited').checked ? 0 : (parseInt($('paramRest').value) || 60),
+    workTime: $('paramWorkUnlimited').checked ? 0 : (parseInt($('paramWorkTime').value) || 0),
   });
   renderExerciseList();
   closeAddModal();
@@ -396,9 +403,14 @@ function openEditModal(index) {
   $('editName').textContent     = ex.name;
   $('editSets').value           = ex.sets;
   $('editReps').value           = ex.reps;
-  $('editRest').value           = ex.rest;
-  $('editWorkTime').value       = ex.workTime || 0;
+  $('editRest').value           = ex.rest > 0 ? ex.rest : 60;
+  $('editRest').disabled        = ex.rest === 0;
+  $('editRestUnlimited').checked = ex.rest === 0;
+  $('editWorkTime').value       = ex.workTime > 0 ? ex.workTime : 0;
+  $('editWorkTime').disabled    = !ex.workTime;
+  $('editWorkUnlimited').checked = !ex.workTime;
   $('editRepsMax').checked      = ex.reps === 0;
+  $('editReps').disabled        = ex.reps === 0;
   editOverlay.classList.add('open');
 }
 
@@ -414,8 +426,8 @@ function confirmEdit() {
     name:     plan.exercises[editingIndex].name,
     sets:     parseInt($('editSets').value) || 3,
     reps:     isMax ? 0 : (parseInt($('editReps').value) || 10),
-    rest:     parseInt($('editRest').value) || 60,
-    workTime: parseInt($('editWorkTime').value) || 0,
+    rest:     $('editRestUnlimited').checked ? 0 : (parseInt($('editRest').value) || 60),
+    workTime: $('editWorkUnlimited').checked ? 0 : (parseInt($('editWorkTime').value) || 0),
   };
   renderExerciseList();
   closeEditModal();
@@ -574,6 +586,19 @@ function bindEvents() {
     if (e.target.checked) $('editReps').value = 0;
     else if ($('editReps').value == '0') $('editReps').value = 10;
   });
+
+  // Unlimited work time checkbox syncs with work time field
+  const bindUnlimited = (chkId, inputId, defaultVal) => {
+    $(chkId).addEventListener('change', e => {
+      $(inputId).disabled = e.target.checked;
+      if (e.target.checked) $(inputId).value = 0;
+      else if ($(inputId).value == '0') $(inputId).value = defaultVal;
+    });
+  };
+  bindUnlimited('paramWorkUnlimited', 'paramWorkTime', 30);
+  bindUnlimited('editWorkUnlimited',  'editWorkTime',  30);
+  bindUnlimited('paramRestUnlimited', 'paramRest',     60);
+  bindUnlimited('editRestUnlimited',  'editRest',      60);
 
   searchInput.addEventListener('input', runSearch);
   filterMuscle.addEventListener('change', runSearch);
